@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incinerator BoxPvP | Fight Like a Legend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #ff4655;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff4655;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23302b63" width="1200" height="600"/><path fill="%23ff4655" opacity="0.1" d="M0 300L50 280L100 290L150 270L200 285L250 275L300 295L350 280L400 290L450 275L500 285L550 270L600 290L650 275L700 285L750 270L800 290L850 280L900 285L950 275L1000 290L1050 280L1100 285L1150 275L1200 290V600H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 70, 85, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ff8a00;
+            margin-bottom: 2rem;
+        }
+
+        .hero-taglines {
+            margin: 2rem 0;
+            font-size: 1.2rem;
+        }
+
+        .hero-taglines p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        /* Server Status */
+        .status-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #ff4655;
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .server-ip {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid #ff4655;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .server-ip:hover {
+            background: rgba(255, 70, 85, 0.1);
+            transform: scale(1.02);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .status-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-online {
+            background: #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        .status-offline {
+            background: #ff0000;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        .status-checking {
+            background: #ffaa00;
+            box-shadow: 0 0 20px #ffaa00;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 70, 85, 0.5);
+        }
+
+        .discord-btn {
+            background: linear-gradient(45deg, #5865F2, #7289da);
+            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
+        }
+
+        .discord-btn:hover {
+            background: linear-gradient(45deg, #4752c4, #5865F2);
+            box-shadow: 0 10px 40px rgba(88, 101, 242, 0.6);
+            transform: scale(1.08);
+        }
+
+        /* Rules Section */
+        .features-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .features-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 70, 85, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            border-color: #ff4655;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 70, 85, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(255, 138, 0, 0.5));
+        }
+
+        .feature-card h3 {
+            color: #ff8a00;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .feature-card > p {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-detail {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .feature-detail strong {
+            color: #ff8a00;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-detail ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-detail li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #ccc;
+        }
+
+        .feature-detail li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .command-box {
+            background: rgba(255, 70, 85, 0.2);
+            border: 1px solid #ff4655;
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .command-box span {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .upgrade-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 138, 0, 0.5);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .upgrade-info h3 {
+            text-align: center;
+            color: #ff8a00;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .progression-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 70, 85, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 70, 85, 0.3);
+            transition: all 0.3s;
+            min-width: 200px;
+        }
+
+        .progress-step:hover {
+            border-color: #ff4655;
+            transform: scale(1.05);
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #ff8a00;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-content p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .progress-arrow {
+            font-size: 2rem;
+            color: #ff4655;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .progression-flow {
+                flex-direction: column;
+            }
+
+            .progress-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* Staff Section */
+        .staff-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .staff-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .staff-tier {
+            margin-bottom: 4rem;
+        }
+
+        .tier-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #ff8a00;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 138, 0, 0.5);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .staff-grid.single-dev {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .staff-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 70, 85, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 70, 85, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .staff-card:hover::before {
+            left: 100%;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 70, 85, 0.4);
+        }
+
+        /* Owner Cards */
+        .owner-card {
+            border: 3px solid rgba(255, 70, 85, 0.5);
+            background: linear-gradient(135deg, rgba(255, 70, 85, 0.15), rgba(255, 138, 0, 0.15));
+        }
+
+        .owner-card:hover {
+            border-color: #ff4655;
+            box-shadow: 0 20px 50px rgba(255, 70, 85, 0.6);
+        }
+
+        /* Co-Owner Cards */
+        .coowner-card {
+            border: 3px solid rgba(0, 221, 255, 0.4);
+            background: linear-gradient(135deg, rgba(0, 221, 255, 0.1), rgba(0, 170, 255, 0.1));
+        }
+
+        .coowner-card:hover {
+            border-color: #00ddff;
+            box-shadow: 0 20px 50px rgba(0, 221, 255, 0.5);
+        }
+
+        /* Developer Cards */
+        .dev-card {
+            border: 3px solid rgba(0, 255, 136, 0.4);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 100, 0.1));
+        }
+
+        .dev-card:hover {
+            border-color: #00ff88;
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Staff Badges */
+        .staff-badge {
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .owner-badge {
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            color: white;
+        }
+
+        .coowner-badge {
+            background: linear-gradient(45deg, #00ddff, #0099ff);
+            color: white;
+        }
+
+        .dev-badge {
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            color: white;
+        }
+
+        .staff-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            border: 4px solid #ff4655;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 70, 85, 0.5);
+            transition: all 0.3s;
+        }
+
+        .owner-card .staff-avatar {
+            border-color: #ff4655;
+        }
+
+        .coowner-card .staff-avatar {
+            border-color: #00ddff;
+        }
+
+        .dev-card .staff-avatar {
+            border-color: #00ff88;
+        }
+
+        .staff-card:hover .staff-avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .staff-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-card h3 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-role {
+            color: #ff8a00;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .coowner-card .staff-role {
+            color: #00ddff;
+        }
+
+        .dev-card .staff-role {
+            color: #00ff88;
+        }
+
+        .staff-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .staff-responsibilities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .responsibility-tag {
+            background: rgba(255, 70, 85, 0.2);
+            border: 1px solid rgba(255, 70, 85, 0.5);
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .coowner-card .responsibility-tag {
+            background: rgba(0, 221, 255, 0.2);
+            border-color: rgba(0, 221, 255, 0.5);
+        }
+
+        .dev-card .responsibility-tag {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .responsibility-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .owner-card .responsibility-tag:hover {
+            background: rgba(255, 70, 85, 0.4);
+            border-color: #ff4655;
+        }
+
+        .coowner-card .responsibility-tag:hover {
+            background: rgba(0, 221, 255, 0.4);
+            border-color: #00ddff;
+        }
+
+        .dev-card .responsibility-tag:hover {
+            background: rgba(0, 255, 136, 0.4);
+            border-color: #00ff88;
+        }
+
+        .staff-contact {
+            background: rgba(255, 138, 0, 0.1);
+            border: 2px solid rgba(255, 138, 0, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .rules-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .rules-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .rule-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 70, 85, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .rule-card:hover {
+            border-color: #ff4655;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 70, 85, 0.3);
+        }
+
+        .rule-card h3 {
+            color: #ff8a00;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .rule-item {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .rule-item:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ff4655;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid #ff4655;
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #00ff00;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🔥 INCINERATOR</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#status">Status</a>
+                <a href="#features">Features</a>
+                <a href="#staff">Staff</a>
+                <a href="#rules">Rules</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>INCINERATOR BOXPVP</h1>
+        <p class="hero-subtitle">ENTER THE ARENA</p>
+        <div class="hero-taglines">
+            <p>⚔️ Fight like a legend.</p>
+            <p>🏆 Dominate every match.</p>
+            <p>👑 Show everyone who's boss.</p>
+        </div>
+        <p style="font-size: 1.3rem; margin-top: 2rem;">Are you ready to become the ultimate BoxPvP champion?</p>
+        <div style="margin-top: 2rem;">
+            <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
+                <span style="font-size: 1.3rem; margin-right: 0.5rem;">💬</span> Join Our Discord
+            </a>
+        </div>
+    </section>
+
+    <section class="status-container" id="status">
+        <h2 style="text-align: center; margin-bottom: 1.5rem;">Server Connection</h2>
+        <div class="server-ip" onclick="copyIP()" title="Click to copy">
+            <strong>IP:</strong> IncineratorBox.aternos.me
+        </div>
+        <div style="text-align: center; color: #aaa;">
+            <strong>Version:</strong> 1.21.x
+        </div>
+        <div class="status-indicator" id="statusIndicator">
+            <span class="status-dot status-checking"></span>
+            <span id="statusText">Checking server status...</span>
+        </div>
+        <div style="text-align: center;">
+            <button class="btn" onclick="checkStatus()">Refresh Status</button>
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <h2>🎮 SERVER FEATURES</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+            Explore our unique game mechanics and progression systems!
+        </p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Incinerator Heart Currency</h3>
+                <p>Mine resources to earn Incinerator Hearts! Resources automatically compress into currency when you collect enough blocks. Progress through different mine tiers to unlock better rewards.</p>
+                <div class="feature-detail">
+                    <p><strong>🔥 Auto-Compression Rates:</strong></p>
+                    <ul>
+                        <li>52 Oak Logs → 1 Heart</li>
+                        <li>48 Polished Blackstone → 1 Heart</li>
+                        <li>42 Coal Blocks → 1 Heart</li>
+                        <li>38 Copper Blocks → 1 Heart</li>
+                        <li>36 Iron Blocks → 1 Heart</li>
+                        <li>32 Gold Blocks → 1 Heart</li>
+                        <li>28 Diamond Blocks → 1 Heart</li>
+                        <li>24 Emerald Blocks → 1 Heart</li>
+                        <li>20 Lapis Blocks → 1 Heart</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⛏️</div>
+                <h3>Mine & Pickaxe Upgrades</h3>
+                <p>Progress through 9 mine tiers, each requiring better pickaxes! Upgrade your pickaxe with the <code>/tools</code> command. Note: Pickaxe upgrades cost <strong>2x</strong> the normal rate!</p>
+                <div class="feature-detail">
+                    <p><strong>⛏️ Mine Progression Tiers:</strong></p>
+                    <ul>
+                        <li><span style="color: #fff;">Wood Mine</span> → Starter Items</li>
+                        <li><span style="color: #aaa;">Stone Mine</span> → Kindling Items</li>
+                        <li><span style="color: #333;">Coal Mine</span> → Ember Items</li>
+                        <li><span style="color: #ff8844;">Copper Mine</span> → Cinder Items</li>
+                        <li><span style="color: #ddd;">Iron Mine</span> → Singeing Items</li>
+                        <li><span style="color: #ffdd00;">Gold Mine</span> → Blazing Items</li>
+                        <li><span style="color: #55ffff;">Diamond Mine</span> → Scorching Items</li>
+                        <li><span style="color: #00ff00;">Emerald Mine</span> → Inferno Items</li>
+                        <li><span style="color: #5555ff;">Lapis Mine</span> → HellFire Items</li>
+                    </ul>
+                    <div class="command-box">Command: <span>/tools</span></div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚔️</div>
+                <h3>Combat Gear Upgrades</h3>
+                <p>Upgrade your armor and sword using the <code>/upgrade</code> command with Incinerator Hearts (tokens). Progress through 10 tiers from Starter to Abyssal Flame!</p>
+                <div class="feature-detail">
+                    <p><strong>⚔️ Upgrade Costs (Armor & Sword):</strong></p>
+                    <ul>
+                        <li>Tier 1: Starter Items → FREE</li>
+                        <li>Tier 2: Kindling Items → 8 Tokens</li>
+                        <li>Tier 3: Ember Items → 12 Tokens</li>
+                        <li>Tier 4: Cinder Items → 16 Tokens</li>
+                        <li>Tier 5: Singeing Items → 32 Tokens</li>
+                        <li>Tier 6: Blazing Items → 48 Tokens</li>
+                        <li>Tier 7: Scorching Items → 64 Tokens</li>
+                        <li>Tier 8: Inferno Items → 72 Tokens</li>
+                        <li>Tier 9: HellFire Items → 84 Tokens</li>
+                        <li>Tier 10: Abyssal Flame → 92 Tokens</li>
+                    </ul>
+                    <div class="command-box">Command: <span>/upgrade</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="upgrade-info">
+            <h3>⚡ How Progression Works</h3>
+            <div class="progression-flow">
+                <div class="progress-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Mine Resources</h4>
+                        <p>Collect blocks in the mines (auto-compresses to Hearts)</p>
+                    </div>
+                </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Earn Hearts</h4>
+                        <p>Trade Incinerator Hearts for upgrades</p>
+                    </div>
+                </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Upgrade Gear</h4>
+                        <p>Use /tools (pickaxe) or /upgrade (combat gear)</p>
+                    </div>
+                </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Dominate!</h4>
+                        <p>Access higher mines and become stronger!</p>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; text-align: center; color: #ff8a00; font-size: 1.1rem;">
+                💡 <strong>Pro Tip:</strong> Pickaxe upgrades cost 2x normal tokens, but unlock access to better mines!
+            </p>
+        </div>
+    </section>
+
+    <section class="staff-section" id="staff">
+        <h2>👑 OUR STAFF TEAM</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+            Meet the dedicated team behind Incinerator BoxPvP
+        </p>
+
+        <!-- Owners -->
+        <div class="staff-tier">
+            <h3 class="tier-title">⭐ SERVER OWNERS ⭐</h3>
+            <div class="staff-grid">
+                <div class="staff-card owner-card">
+                    <div class="staff-badge owner-badge">👑 OWNER</div>
+                    <div class="staff-avatar">
+                        <img src="https://mc-heads.net/avatar/Afaque/100" alt="Afaque" onerror="this.src='https://via.placeholder.com/100/ff4655/ffffff?text=A'">
+                    </div>
+                    <h3>Afaque</h3>
+                    <p class="staff-role">1st Owner</p>
+                    <p class="staff-description">Founder and lead developer of Incinerator BoxPvP. Created the entire server, all custom mechanics, and continues to push new updates.</p>
+                    <div class="staff-responsibilities">
+                        <span class="responsibility-tag">Founder</span>
+                        <span class="responsibility-tag">Lead Development</span>
+                        <span class="responsibility-tag">Server Architecture</span>
+                    </div>
+                </div>
+
+                <div class="staff-card owner-card">
+                    <div class="staff-badge owner-badge">👑 OWNER</div>
+                    <div class="staff-avatar">
+                        <img src="https://mc-heads.net/avatar/Laurpower/100" alt="Laurpower" onerror="this.src='https://via.placeholder.com/100/ff8a00/ffffff?text=L'">
+                    </div>
+                    <h3>Laurpower</h3>
+                    <p class="staff-role">2nd Owner</p>
+                    <p class="staff-description">Co-founder and strategic leader. Manages server operations, community growth, and works closely with Afaque on major decisions.</p>
+                    <div class="staff-responsibilities">
+                        <span class="responsibility-tag">Co-Founder</span>
+                        <span class="responsibility-tag">Operations</span>
+                        <span class="responsibility-tag">Community Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Co-Owners -->
+        <div class="staff-tier">
+            <h3 class="tier-title">💎 CO-OWNERS 💎</h3>
+            <div class="staff-grid">
+                <div class="staff-card coowner-card">
+                    <div class="staff-badge coowner-badge">💎 CO-OWNER</div>
+                    <div class="staff-avatar">
+                        <img src="https://mc-heads.net/avatar/GistheKey/100" alt="GistheKey" onerror="this.src='https://via.placeholder.com/100/00ddff/ffffff?text=G'">
+                    </div>
+                    <h3>GistheKey</h3>
+                    <p class="staff-role">1st Co-Owner</p>
+                    <p class="staff-description">Senior administrator ensuring smooth gameplay and fair enforcement of rules. Trusted with major server decisions and player management.</p>
+                    <div class="staff-responsibilities">
+                        <span class="responsibility-tag">Administration</span>
+                        <span class="responsibility-tag">Player Support</span>
+                        <span class="responsibility-tag">Moderation</span>
+                    </div>
+                </div>
+
+                <div class="staff-card coowner-card">
+                    <div class="staff-badge coowner-badge">💎 CO-OWNER</div>
+                    <div class="staff-avatar">
+                        <img src="https://mc-heads.net/avatar/cart0909tt/100" alt="Cart" onerror="this.src='https://via.placeholder.com/100/00ddff/ffffff?text=C'">
+                    </div>
+                    <h3>Cart</h3>
+                    <p class="staff-role">2nd Co-Owner</p>
+                    <p class="staff-description">Key administrator focused on maintaining server quality and community standards. Works with the team to improve player experience.</p>
+                    <div class="staff-responsibilities">
+                        <span class="responsibility-tag">Administration</span>
+                        <span class="responsibility-tag">Event Coordination</span>
+                        <span class="responsibility-tag">Quality Control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Developer -->
+        <div class="staff-tier">
+            <h3 class="tier-title">⚙️ DEVELOPMENT TEAM ⚙️</h3>
+            <div class="staff-grid single-dev">
+                <div class="staff-card dev-card">
+                    <div class="staff-badge dev-badge">⚙️ DEVELOPER</div>
+                    <div class="staff-avatar">
+                        <img src="https://mc-heads.net/avatar/Jotmar/100" alt="Jotmar" onerror="this.src='https://via.placeholder.com/100/00ff88/ffffff?text=J'">
+                    </div>
+                    <h3>Jotmar</h3>
+                    <p class="staff-role">Lead Developer</p>
+                    <p class="staff-description">Technical expert responsible for plugin development, bug fixes, and implementing new features. Keeps the server running smoothly behind the scenes.</p>
+                    <div class="staff-responsibilities">
+                        <span class="responsibility-tag">Plugin Development</span>
+                        <span class="responsibility-tag">Bug Fixes</span>
+                        <span class="responsibility-tag">Feature Implementation</span>
+                        <span class="responsibility-tag">Technical Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="staff-contact">
+            <p style="text-align: center; font-size: 1.1rem; color: #ddd;">
+                🎮 Need help? Our staff team is here for you! Reach out in-game or through Discord.
+            </p>
+            <p style="text-align: center; margin-top: 1rem; font-size: 1rem;">
+                <strong style="color: #ff8a00;">Email Support:</strong><br>
+                <a href="/cdn-cgi/l/email-protection#d0a3a5a0a0bfa2a490b9beb3b9beb5a2b1a4bfa2b2bfa8feb9be" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
+                    📧 <span class="__cf_email__" data-cfemail="93e0e6e3e3fce1e7d3fafdf0fafdf6e1f2e7fce1f1fcebbdfafd">[email&#160;protected]</span>
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <section class="rules-section" id="rules">
+        <h2>⚖️ SERVER RULES</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+            Read carefully. Breaking rules may result in warnings, kicks, or permanent bans. Play fair, fight hard, and dominate the arena!
+        </p>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <h3>Rules 1-9: General Conduct</h3>
+                <div class="rule-item">Be respectful to all players.</div>
+                <div class="rule-item">No harassment, hate speech, or discrimination.</div>
+                <div class="rule-item">No spamming chat, excessive caps, or flooding.</div>
+                <div class="rule-item">Keep usernames and skins appropriate.</div>
+                <div class="rule-item">English only in global chat.</div>
+                <div class="rule-item">No cheating, hacks, or exploits.</div>
+                <div class="rule-item">Do not sabotage matches intentionally.</div>
+                <div class="rule-item">No glitching arenas, items, or mechanics.</div>
+                <div class="rule-item">Use only allowed mods/plugins.</div>
+            </div>
+
+            <div class="rule-card">
+                <h3>Rules 10-17: Gameplay</h3>
+                <div class="rule-item">PvP is fair play: no teaming in solo modes.</div>
+                <div class="rule-item">Respect arena mechanics and boundaries.</div>
+                <div class="rule-item">No blocking spawn areas or traps.</div>
+                <div class="rule-item">No camping in unfair locations.</div>
+                <div class="rule-item">Follow mini-game specific rules.</div>
+                <div class="rule-item">Do not abuse teleport commands.</div>
+                <div class="rule-item">No scamming or stealing from other players.</div>
+                <div class="rule-item">No item or currency duplication.</div>
+            </div>
+
+            <div class="rule-card">
+                <h3>Rules 18-25: Economy & Community</h3>
+                <div class="rule-item">Use server shops and economy fairly.</div>
+                <div class="rule-item">No advertising other servers.</div>
+                <div class="rule-item">Follow instructions from staff members.</div>
+                <div class="rule-item">Do not argue publicly with staff.</div>
+                <div class="rule-item">Report bugs, exploits, or rule breakers properly.</div>
+                <div class="rule-item">False reporting may result in punishment.</div>
+                <div class="rule-item">Avoid inappropriate or offensive builds.</div>
+                <div class="rule-item">Have fun and maintain a positive community environment.</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.2rem; color: #ff4655; margin-top: 2rem;">
+            ⚠️ Breaking these rules can result in warnings, kicks, or permanent bans. Respect the server and dominate! ⚠️
+        </p>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 1.5rem;">
+            <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
+                <span style="font-size: 1.2rem; margin-right: 0.5rem;">💬</span> Join Our Discord
+            </a>
+        </div>
+        <p style="margin-bottom: 1rem;">
+            <strong style="color: #ff8a00;">Need Help?</strong><br>
+            <a href="/cdn-cgi/l/email-protection#96e5e3e6e6f9e4e2d6fff8f5fff8f3e4f7e2f9e4f4f9eeb8fff8" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
+                📧 <span class="__cf_email__" data-cfemail="daa9afaaaab5a8ae9ab3b4b9b3b4bfa8bbaeb5a8b8b5a2f4b3b4">[email&#160;protected]</span>
+            </a>
+        </p>
+        <p>&copy; 2026 Incinerator BoxPvP. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; color: #aaa;">Fight like a legend. Dominate the arena.</p>
+    </footer>
+
+    <div class="copy-notification" id="copyNotification">
+        ✓ Server IP copied to clipboard!
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function copyIP() {
+            const ip = "IncineratorBox.aternos.me";
+            navigator.clipboard.writeText(ip).then(() => {
+                const notification = document.getElementById('copyNotification');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+async function checkStatus() {
+    const statusIndicator = document.getElementById('statusIndicator');
+    const statusText = document.getElementById('statusText');
+    const statusDot = statusIndicator.querySelector('.status-dot');
+
+    // Checking state
+    statusDot.className = 'status-dot status-checking';
+    statusText.textContent = 'Checking server status...';
+
+    try {
+        const res = await fetch(
+            'https://api.mcsrvstat.us/3/IncineratorBox.aternos.me',
+            { cache: 'no-store' } // prevents cached false results
+        );
+
+        if (!res.ok) throw new Error('API failed');
+
+        const data = await res.json();
+        console.log('MCSrvStat:', data);
+
+        if (data.online) {
+            const online = data.players?.online ?? 0;
+            const max = data.players?.max ?? '?';
+
+            statusDot.className = 'status-dot status-online';
+            statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
+        } else {
+            statusDot.className = 'status-dot status-offline';
+            statusText.textContent = '🔴 Server OFFLINE (Start it on Aternos)';
+        }
+
+    } catch (err) {
+        console.error(err);
+        statusDot.className = 'status-dot status-offline';
+        statusText.textContent = '🔴 Status check failed';
+    }
+}
+
+
+        // Check status on page load
+        checkStatus();
+        
+        // Auto-refresh every 60 seconds
+        setInterval(checkStatus, 60000);
+    </script>
+</body>
+</html>
