@@ -1094,23 +1094,17 @@ async function checkStatus() {
         const data = await res.json();
         console.log('MCSrvStat:', data);
 
-        if (data.online) {
-            const online = data.players?.online ?? 0;
-            const max = data.players?.max ?? '?';
+if (data.online === true && data.players) {
+    const online = data.players.online ?? 0;
+    const max = data.players.max ?? '?';
 
-            statusDot.className = 'status-dot status-online';
-            statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
-        } else {
-            statusDot.className = 'status-dot status-offline';
-            statusText.textContent = '🔴 Server OFFLINE (Start it on Aternos)';
-        }
-
-    } catch (err) {
-        console.error(err);
-        statusDot.className = 'status-dot status-offline';
-        statusText.textContent = '🔴 Status check failed';
-    }
+    statusDot.className = 'status-dot status-online';
+    statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
+} else {
+    statusDot.className = 'status-dot status-offline';
+    statusText.textContent = '🔴 Server OFFLINE (Start it on Aternos)';
 }
+
 
 
         // Check status on page load
@@ -1120,4 +1114,5 @@ async function checkStatus() {
         setInterval(checkStatus, 60000);
     </script>
 </body>
+
 </html>
