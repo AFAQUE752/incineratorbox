@@ -1092,22 +1092,22 @@ async function checkStatus() {
         const data = await res.json();
         console.log('MCSrvStat:', data);
 
-        if (data.online === true) {
-            const online = data.players?.online ?? 0;
-            const max = data.players?.max ?? '?';
+        if (
+    data.online === true &&
+    data.players &&
+    typeof data.players.max === 'number' &&
+    data.players.max > 0
+) {
+    const online = data.players.online ?? 0;
+    const max = data.players.max;
 
-            statusDot.className = 'status-dot status-online';
-            statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
-        } else {
-            statusDot.className = 'status-dot status-offline';
-            statusText.textContent = '🔴 Server OFFLINE (Aternos not running)';
-        }
+    statusDot.className = 'status-dot status-online';
+    statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
+} else {
+    statusDot.className = 'status-dot status-offline';
+    statusText.textContent = '🔴 Server OFFLINE (Sleeping / Stopped)';
+}
 
-    } catch (err) {
-        statusDot.className = 'status-dot status-offline';
-        statusText.textContent = '⚠️ Status check failed';
-        console.error(err);
-    }
 }
 
 // run ONCE on load
@@ -1121,4 +1121,5 @@ setInterval(checkStatus, 60000);
 </body>
 
 </html>
+
 
