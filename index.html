@@ -1062,17 +1062,15 @@
         ✓ Server IP copied to clipboard!
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        function copyIP() {
-            const ip = "IncineratorBox.aternos.me";
-            navigator.clipboard.writeText(ip).then(() => {
-                const notification = document.getElementById('copyNotification');
-                notification.classList.add('show');
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 2000);
-            });
-        }
+<script>
+function copyIP() {
+    const ip = "IncineratorBox.aternos.me";
+    navigator.clipboard.writeText(ip).then(() => {
+        const notification = document.getElementById('copyNotification');
+        notification.classList.add('show');
+        setTimeout(() => notification.classList.remove('show'), 2000);
+    });
+}
 
 async function checkStatus() {
     const statusIndicator = document.getElementById('statusIndicator');
@@ -1081,12 +1079,12 @@ async function checkStatus() {
 
     // Checking state
     statusDot.className = 'status-dot status-checking';
-    statusText.textContent = 'Checking server status...';
+    statusText.textContent = 'Fetching live server status...';
 
     try {
         const res = await fetch(
             'https://api.mcsrvstat.us/3/IncineratorBox.aternos.me',
-            { cache: 'no-store' } // prevents cached false results
+            { cache: 'no-store' }
         );
 
         if (!res.ok) throw new Error('API failed');
@@ -1094,25 +1092,33 @@ async function checkStatus() {
         const data = await res.json();
         console.log('MCSrvStat:', data);
 
-if (data.online === true && data.players) {
-    const online = data.players.online ?? 0;
-    const max = data.players.max ?? '?';
+        if (data.online === true) {
+            const online = data.players?.online ?? 0;
+            const max = data.players?.max ?? '?';
 
-    statusDot.className = 'status-dot status-online';
-    statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
-} else {
-    statusDot.className = 'status-dot status-offline';
-    statusText.textContent = '🔴 Server OFFLINE (Start it on Aternos)';
+            statusDot.className = 'status-dot status-online';
+            statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
+        } else {
+            statusDot.className = 'status-dot status-offline';
+            statusText.textContent = '🔴 Server OFFLINE (Aternos not running)';
+        }
+
+    } catch (err) {
+        statusDot.className = 'status-dot status-offline';
+        statusText.textContent = '⚠️ Status check failed';
+        console.error(err);
+    }
 }
 
+// run ONCE on load
+checkStatus();
+
+// refresh every 60 seconds
+setInterval(checkStatus, 60000);
+</script>
 
 
-        // Check status on page load
-        checkStatus();
-        
-        // Auto-refresh every 60 seconds
-        setInterval(checkStatus, 60000);
-    </script>
 </body>
 
 </html>
+
