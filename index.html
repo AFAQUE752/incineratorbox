@@ -1105,7 +1105,7 @@ async function checkStatus() {
             statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
         } else {
             statusDot.className = 'status-dot status-offline';
-            statusText.textContent = '🔴 Server OFFLINE (Sleeping / Stopped)';
+            statusText.textContent = '🔴 Server Sleeping | Join to wake it up!';
         }
 
     } catch (err) {
@@ -1122,10 +1122,10 @@ checkStatus();
 setInterval(checkStatus, 60000);
 </script>
 
-
 </body>
 
 </html>
+
 
 
 
