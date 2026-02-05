@@ -1093,21 +1093,26 @@ async function checkStatus() {
         console.log('MCSrvStat:', data);
 
         if (
-    data.online === true &&
-    data.players &&
-    typeof data.players.max === 'number' &&
-    data.players.max > 0
-) {
-    const online = data.players.online ?? 0;
-    const max = data.players.max;
+            data.online === true &&
+            data.players &&
+            typeof data.players.max === 'number' &&
+            data.players.max > 0
+        ) {
+            const online = data.players.online ?? 0;
+            const max = data.players.max;
 
-    statusDot.className = 'status-dot status-online';
-    statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
-} else {
-    statusDot.className = 'status-dot status-offline';
-    statusText.textContent = '🔴 Server OFFLINE (Sleeping / Stopped)';
-}
+            statusDot.className = 'status-dot status-online';
+            statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
+        } else {
+            statusDot.className = 'status-dot status-offline';
+            statusText.textContent = '🔴 Server OFFLINE (Sleeping / Stopped)';
+        }
 
+    } catch (err) {
+        console.error(err);
+        statusDot.className = 'status-dot status-offline';
+        statusText.textContent = '🔴 Status check failed';
+    }
 }
 
 // run ONCE on load
@@ -1121,5 +1126,6 @@ setInterval(checkStatus, 60000);
 </body>
 
 </html>
+
 
 
