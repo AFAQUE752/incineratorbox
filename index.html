@@ -89,8 +89,8 @@
             opacity: 0.9;
         }
 
-        /* Server Status */
-        .status-container {
+        /* Server IP Display */
+        .server-info {
             max-width: 600px;
             margin: 3rem auto;
             background: rgba(255, 255, 255, 0.05);
@@ -115,42 +115,6 @@
         .server-ip:hover {
             background: rgba(255, 70, 85, 0.1);
             transform: scale(1.02);
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-            font-size: 1.1rem;
-        }
-
-        .status-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .status-online {
-            background: #00ff00;
-            box-shadow: 0 0 20px #00ff00;
-        }
-
-        .status-offline {
-            background: #ff0000;
-            box-shadow: 0 0 20px #ff0000;
-        }
-
-        .status-checking {
-            background: #ffaa00;
-            box-shadow: 0 0 20px #ffaa00;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         .btn {
@@ -726,7 +690,6 @@
             <div class="logo">🔥 INCINERATOR</div>
             <nav>
                 <a href="#home">Home</a>
-                <a href="#status">Status</a>
                 <a href="#features">Features</a>
                 <a href="#staff">Staff</a>
                 <a href="#rules">Rules</a>
@@ -743,27 +706,21 @@
             <p>👑 Show everyone who's boss.</p>
         </div>
         <p style="font-size: 1.3rem; margin-top: 2rem;">Are you ready to become the ultimate BoxPvP champion?</p>
+        
+        <div class="server-info">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Server Connection</h2>
+            <div class="server-ip" onclick="copyIP()" title="Click to copy">
+                <strong>IP:</strong> IncineratorBox.aternos.me
+            </div>
+            <div style="text-align: center; color: #aaa; margin-top: 1rem;">
+                <strong>Version:</strong> 1.21.x
+            </div>
+        </div>
+        
         <div style="margin-top: 2rem;">
             <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
                 <span style="font-size: 1.3rem; margin-right: 0.5rem;">💬</span> Join Our Discord
             </a>
-        </div>
-    </section>
-
-    <section class="status-container" id="status">
-        <h2 style="text-align: center; margin-bottom: 1.5rem;">Server Connection</h2>
-        <div class="server-ip" onclick="copyIP()" title="Click to copy">
-            <strong>IP:</strong> IncineratorBox.aternos.me
-        </div>
-        <div style="text-align: center; color: #aaa;">
-            <strong>Version:</strong> 1.21.x
-        </div>
-        <div class="status-indicator" id="statusIndicator">
-            <span class="status-dot status-checking"></span>
-            <span id="statusText">Checking server status...</span>
-        </div>
-        <div style="text-align: center;">
-            <button class="btn" onclick="checkStatus()">Refresh Status</button>
         </div>
     </section>
 
@@ -1062,7 +1019,7 @@
         ✓ Server IP copied to clipboard!
     </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function copyIP() {
     const ip = "IncineratorBox.aternos.me";
     navigator.clipboard.writeText(ip).then(() => {
@@ -1071,61 +1028,7 @@ function copyIP() {
         setTimeout(() => notification.classList.remove('show'), 2000);
     });
 }
-
-async function checkStatus() {
-    const statusIndicator = document.getElementById('statusIndicator');
-    const statusText = document.getElementById('statusText');
-    const statusDot = statusIndicator.querySelector('.status-dot');
-
-    // Checking state
-    statusDot.className = 'status-dot status-checking';
-    statusText.textContent = 'Fetching live server status...';
-
-    try {
-        const res = await fetch(
-            'https://api.mcsrvstat.us/3/IncineratorBox.aternos.me',
-            { cache: 'no-store' }
-        );
-
-        if (!res.ok) throw new Error('API failed');
-
-        const data = await res.json();
-        console.log('MCSrvStat:', data);
-
-        if (
-            data.online === true &&
-            data.players &&
-            typeof data.players.max === 'number' &&
-            data.players.max > 0
-        ) {
-            const online = data.players.online ?? 0;
-            const max = data.players.max;
-
-            statusDot.className = 'status-dot status-online';
-            statusText.textContent = `🟢 Server ONLINE | Players: ${online}/${max}`;
-        } else {
-            statusDot.className = 'status-dot status-offline';
-            statusText.textContent = '🔴 Server Sleeping | Join to wake it up!';
-        }
-
-    } catch (err) {
-        console.error(err);
-        statusDot.className = 'status-dot status-offline';
-        statusText.textContent = '🔴 Status check failed';
-    }
-}
-
-// run ONCE on load
-checkStatus();
-
-// refresh every 60 seconds
-setInterval(checkStatus, 60000);
 </script>
 
 </body>
-
 </html>
-
-
-
-
