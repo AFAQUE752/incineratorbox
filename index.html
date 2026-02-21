@@ -149,7 +149,7 @@
             transform: scale(1.08);
         }
 
-        /* Rules Section */
+        /* Features Section */
         .features-section {
             max-width: 1200px;
             margin: 4rem auto;
@@ -411,7 +411,6 @@
             box-shadow: 0 20px 50px rgba(255, 70, 85, 0.4);
         }
 
-        /* Owner Cards */
         .owner-card {
             border: 3px solid rgba(255, 70, 85, 0.5);
             background: linear-gradient(135deg, rgba(255, 70, 85, 0.15), rgba(255, 138, 0, 0.15));
@@ -422,7 +421,6 @@
             box-shadow: 0 20px 50px rgba(255, 70, 85, 0.6);
         }
 
-        /* Co-Owner Cards */
         .coowner-card {
             border: 3px solid rgba(0, 221, 255, 0.4);
             background: linear-gradient(135deg, rgba(0, 221, 255, 0.1), rgba(0, 170, 255, 0.1));
@@ -433,7 +431,6 @@
             box-shadow: 0 20px 50px rgba(0, 221, 255, 0.5);
         }
 
-        /* Developer Cards */
         .dev-card {
             border: 3px solid rgba(0, 255, 136, 0.4);
             background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 100, 0.1));
@@ -444,7 +441,6 @@
             box-shadow: 0 20px 50px rgba(0, 255, 136, 0.5);
         }
 
-        /* Staff Badges */
         .staff-badge {
             padding: 0.5rem 1.5rem;
             border-radius: 20px;
@@ -481,17 +477,9 @@
             transition: all 0.3s;
         }
 
-        .owner-card .staff-avatar {
-            border-color: #ff4655;
-        }
-
-        .coowner-card .staff-avatar {
-            border-color: #00ddff;
-        }
-
-        .dev-card .staff-avatar {
-            border-color: #00ff88;
-        }
+        .owner-card .staff-avatar { border-color: #ff4655; }
+        .coowner-card .staff-avatar { border-color: #00ddff; }
+        .dev-card .staff-avatar { border-color: #00ff88; }
 
         .staff-card:hover .staff-avatar {
             transform: scale(1.1) rotate(5deg);
@@ -516,13 +504,8 @@
             margin-bottom: 1rem;
         }
 
-        .coowner-card .staff-role {
-            color: #00ddff;
-        }
-
-        .dev-card .staff-role {
-            color: #00ff88;
-        }
+        .coowner-card .staff-role { color: #00ddff; }
+        .dev-card .staff-role { color: #00ff88; }
 
         .staff-description {
             color: #ccc;
@@ -558,33 +541,20 @@
             border-color: rgba(0, 255, 136, 0.5);
         }
 
-        .responsibility-tag:hover {
-            transform: scale(1.05);
-        }
-
-        .owner-card .responsibility-tag:hover {
-            background: rgba(255, 70, 85, 0.4);
-            border-color: #ff4655;
-        }
-
-        .coowner-card .responsibility-tag:hover {
-            background: rgba(0, 221, 255, 0.4);
-            border-color: #00ddff;
-        }
-
-        .dev-card .responsibility-tag:hover {
-            background: rgba(0, 255, 136, 0.4);
-            border-color: #00ff88;
-        }
+        .responsibility-tag:hover { transform: scale(1.05); }
+        .owner-card .responsibility-tag:hover { background: rgba(255, 70, 85, 0.4); border-color: #ff4655; }
+        .coowner-card .responsibility-tag:hover { background: rgba(0, 221, 255, 0.4); border-color: #00ddff; }
+        .dev-card .responsibility-tag:hover { background: rgba(0, 255, 136, 0.4); border-color: #00ff88; }
 
         .staff-contact {
-            background: rgba(255, 138, 0, 0.1);
-            border: 2px solid rgba(255, 138, 0, 0.3);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 138, 0, 0.5);
+            border-radius: 20px;
             padding: 1.5rem;
             backdrop-filter: blur(10px);
         }
 
+        /* Rules Section */
         .rules-section {
             max-width: 1200px;
             margin: 4rem auto;
@@ -643,6 +613,229 @@
             font-weight: bold;
         }
 
+        /* ===== CHANGELOG SECTION ===== */
+        .changelog-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .changelog-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .changelog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .changelog-entry {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 70, 85, 0.25);
+            border-left: 4px solid #ff4655;
+            border-radius: 0 16px 16px 0;
+            padding: 2rem 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .changelog-entry:hover {
+            border-color: #ff4655;
+            border-left-color: #ff8a00;
+            background: rgba(255, 70, 85, 0.06);
+            transform: translateX(6px);
+            box-shadow: 0 8px 30px rgba(255, 70, 85, 0.2);
+        }
+
+        .changelog-entry.major {
+            border-left-color: #ff8a00;
+            background: rgba(255, 138, 0, 0.06);
+        }
+
+        .changelog-entry.major:hover {
+            border-left-color: #ff4655;
+            background: rgba(255, 138, 0, 0.1);
+        }
+
+        .changelog-entry.staff-update {
+            border-left-color: #00ddff;
+            background: rgba(0, 221, 255, 0.05);
+        }
+
+        .changelog-entry.staff-update:hover {
+            background: rgba(0, 221, 255, 0.08);
+            border-left-color: #00aaff;
+        }
+
+        .changelog-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .changelog-tag {
+            font-size: 0.78rem;
+            font-weight: bold;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-announcement {
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            color: #fff;
+        }
+
+        .tag-staff {
+            background: linear-gradient(45deg, #00ddff, #0099ff);
+            color: #fff;
+        }
+
+        .tag-upcoming {
+            background: linear-gradient(45deg, #a855f7, #7c3aed);
+            color: #fff;
+        }
+
+        .tag-overhaul {
+            background: linear-gradient(45deg, #ff8a00, #ff4655);
+            color: #fff;
+            animation: pulse-tag 2s infinite;
+        }
+
+        @keyframes pulse-tag {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(255, 138, 0, 0); }
+        }
+
+        .changelog-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+
+        .changelog-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .changelog-entry.staff-update .changelog-title {
+            color: #00ddff;
+        }
+
+        .changelog-body {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        .changelog-body p {
+            margin-bottom: 0.8rem;
+        }
+
+        .changelog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0;
+        }
+
+        .changelog-list li {
+            padding: 0.4rem 0 0.4rem 1.6rem;
+            position: relative;
+            color: #ccc;
+        }
+
+        .changelog-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0.4rem;
+            color: #ff4655;
+            font-weight: bold;
+        }
+
+        .changelog-entry.staff-update .changelog-list li:before {
+            color: #00ddff;
+        }
+
+        .changelog-entry.major .changelog-list li:before {
+            color: #ff8a00;
+        }
+
+        .changelog-subhead {
+            color: #ff8a00;
+            font-weight: bold;
+            margin: 1.2rem 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .changelog-entry.staff-update .changelog-subhead {
+            color: #00ddff;
+        }
+
+        .role-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            margin: 0.3rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .role-old {
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .role-arrow {
+            color: #ff8a00;
+        }
+
+        .role-new {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .changelog-ping {
+            display: inline-block;
+            background: rgba(88, 101, 242, 0.25);
+            border: 1px solid rgba(88, 101, 242, 0.4);
+            color: #7289da;
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            color: #c084fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.8);
@@ -670,17 +863,11 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                display: none;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            nav { display: none; }
+            .changelog-header { flex-direction: column; align-items: flex-start; }
+            .changelog-date { margin-left: 0; }
         }
     </style>
 </head>
@@ -693,6 +880,7 @@
                 <a href="#features">Features</a>
                 <a href="#staff">Staff</a>
                 <a href="#rules">Rules</a>
+                <a href="#changelog">Changelog</a>
             </nav>
         </div>
     </header>
@@ -864,9 +1052,9 @@
                 <div class="staff-card owner-card">
                     <div class="staff-badge owner-badge">👑 OWNER</div>
                     <div class="staff-avatar">
-                        <img src="https://mc-heads.net/avatar/Laurpower/100" alt="Laurpower" onerror="this.src='https://via.placeholder.com/100/ff8a00/ffffff?text=L'">
+                        <img src="https://mc-heads.net/avatar/cart0909tt/100" alt="Cart" onerror="this.src='https://via.placeholder.com/100/ff8a00/ffffff?text=C'">
                     </div>
-                    <h3>Laurpower</h3>
+                    <h3>Cart</h3>
                     <p class="staff-role">2nd Owner</p>
                     <p class="staff-description">Co-founder and strategic leader. Manages server operations, community growth, and works closely with Afaque on major decisions.</p>
                     <div class="staff-responsibilities">
@@ -900,9 +1088,9 @@
                 <div class="staff-card coowner-card">
                     <div class="staff-badge coowner-badge">💎 CO-OWNER</div>
                     <div class="staff-avatar">
-                        <img src="https://mc-heads.net/avatar/cart0909tt/100" alt="Cart" onerror="this.src='https://via.placeholder.com/100/00ddff/ffffff?text=C'">
+                        <img src="https://mc-heads.net/avatar/Laurpower/100" alt="Laurpower" onerror="this.src='https://via.placeholder.com/100/00ddff/ffffff?text=L'">
                     </div>
-                    <h3>Cart</h3>
+                    <h3>Laurpower</h3>
                     <p class="staff-role">2nd Co-Owner</p>
                     <p class="staff-description">Key administrator focused on maintaining server quality and community standards. Works with the team to improve player experience.</p>
                     <div class="staff-responsibilities">
@@ -942,8 +1130,8 @@
             </p>
             <p style="text-align: center; margin-top: 1rem; font-size: 1rem;">
                 <strong style="color: #ff8a00;">Email Support:</strong><br>
-                <a href="/cdn-cgi/l/email-protection#d0a3a5a0a0bfa2a490b9beb3b9beb5a2b1a4bfa2b2bfa8feb9be" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
-                    📧 <span class="__cf_email__" data-cfemail="93e0e6e3e3fce1e7d3fafdf0fafdf6e1f2e7fce1f1fcebbdfafd">[email&#160;protected]</span>
+                <a href="mailto:incineratorboxpvp@gmail.com" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
+                    📧 incineratorboxpvp@gmail.com
                 </a>
             </p>
         </div>
@@ -999,6 +1187,83 @@
         </p>
     </section>
 
+    <!-- ===== CHANGELOG SECTION ===== -->
+    <section class="changelog-section" id="changelog">
+        <h2>📋 CHANGELOG</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+            Stay up to date with the latest server updates, announcements, and changes.
+        </p>
+
+        <div class="changelog-container">
+
+            <!-- Entry 1: Overhaul Announcement -->
+            <div class="changelog-entry major">
+                <div class="changelog-header">
+                    <span class="changelog-tag tag-overhaul">🔥 MAJOR ANNOUNCEMENT</span>
+                    <span class="changelog-tag tag-upcoming">⚡ Upcoming</span>
+                    <span class="changelog-date">2026</span>
+                </div>
+                <div class="changelog-title">Complete Server Overhaul & Reset Announcement</div>
+                <div class="changelog-body">
+                    <div class="changelog-ping">@everyone</div>
+                    <p>A complete overhaul of the server is incoming. <strong>Everything will be reset</strong> and we'll be starting fresh. The features listed below will be included along with several new systems — a new upgrading system, a fully hand-built map, and major lag fixes to improve performance and stability.</p>
+
+                    <p class="changelog-subhead">🗺️ What's Coming:</p>
+                    <ul class="changelog-list">
+                        <li>More mines for the overworld <em>(Nether is delayed — something big is planned)</em></li>
+                        <li>More overworld armour sets (harder to obtain than current ones)</li>
+                        <li>Progression system rework: Current order is Harder → Easier; upcoming will be Easier → Harder</li>
+                        <li>More bosses <span class="coming-soon-badge">⚠️ Not confirmed yet</span></li>
+                        <li>A new grinding area: <strong>AngelFalls</strong></li>
+                        <li>Possible circular map layout redesign</li>
+                    </ul>
+
+                    <p class="changelog-subhead">⚙️ Additional Features Planned:</p>
+                    <ul class="changelog-list">
+                        <li>Reworked economy with better balance and money sinks</li>
+                        <li>Advanced upgrading & crafting system with rarer materials</li>
+                        <li>High-risk / high-reward PvP and grinding zones</li>
+                        <li>Player-driven market and auction improvements</li>
+                        <li>Seasonal challenges with exclusive progression rewards</li>
+                        <li>Optimized anti-cheat and server stability upgrades</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem; color: #ff8a00; font-style: italic;">Many more updates are planned. This reset is meant to rebuild the server into something bigger, smoother, and more competitive.</p>
+                </div>
+            </div>
+
+            <!-- Entry 2: Staff Role Changes -->
+            <div class="changelog-entry staff-update">
+                <div class="changelog-header">
+                    <span class="changelog-tag tag-staff">👥 Staff Update</span>
+                    <span class="changelog-date">2026</span>
+                </div>
+                <div class="changelog-title">Staff Role Changes</div>
+                <div class="changelog-body">
+                    <p>The following staff members have had their roles updated. All other staff remain unchanged.</p>
+
+                    <p class="changelog-subhead">🔄 Role Changes:</p>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin: 0.8rem 0;">
+                        <div class="role-change">
+                            <span>🎮 Cart</span>
+                            <span class="role-old">2nd Co-Owner</span>
+                            <span class="role-arrow">→</span>
+                            <span class="role-new">👑 2nd Owner</span>
+                        </div>
+                        <div class="role-change">
+                            <span>🎮 Laurpower</span>
+                            <span class="role-old">2nd Owner</span>
+                            <span class="role-arrow">→</span>
+                            <span class="role-new">💎 2nd Co-Owner</span>
+                        </div>
+                    </div>
+                    <p style="color: #888; font-size: 0.9rem; margin-top: 0.8rem;">All other staff members (Afaque, GistheKey, Jotmar) remain in their current roles.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
         <div style="margin-bottom: 1.5rem;">
             <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
@@ -1007,8 +1272,8 @@
         </div>
         <p style="margin-bottom: 1rem;">
             <strong style="color: #ff8a00;">Need Help?</strong><br>
-            <a href="/cdn-cgi/l/email-protection#96e5e3e6e6f9e4e2d6fff8f5fff8f3e4f7e2f9e4f4f9eeb8fff8" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
-                📧 <span class="__cf_email__" data-cfemail="daa9afaaaab5a8ae9ab3b4b9b3b4bfa8bbaeb5a8b8b5a2f4b3b4">[email&#160;protected]</span>
+            <a href="mailto:incineratorboxpvp@gmail.com" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
+                📧 incineratorboxpvp@gmail.com
             </a>
         </p>
         <p>&copy; 2026 Incinerator BoxPvP. All rights reserved.</p>
@@ -1019,16 +1284,15 @@
         ✓ Server IP copied to clipboard!
     </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function copyIP() {
-    const ip = "IncineratorBox.aternos.me";
-    navigator.clipboard.writeText(ip).then(() => {
-        const notification = document.getElementById('copyNotification');
-        notification.classList.add('show');
-        setTimeout(() => notification.classList.remove('show'), 2000);
-    });
-}
-</script>
-
+    <script>
+    function copyIP() {
+        const ip = "IncineratorBox.aternos.me";
+        navigator.clipboard.writeText(ip).then(() => {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 2000);
+        });
+    }
+    </script>
 </body>
 </html>
