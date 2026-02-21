@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Incinerator BoxPvP | Fight Like a Legend</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,9 +14,9 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* ── Header ── */
         header {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.5);
             backdrop-filter: blur(10px);
             padding: 1.5rem 2rem;
             position: sticky;
@@ -28,7 +24,6 @@
             z-index: 1000;
             border-bottom: 2px solid #ff4655;
         }
-
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -36,7 +31,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
@@ -45,63 +39,34 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        nav a { color: #fff; text-decoration: none; margin-left: 2rem; transition: color 0.3s; }
+        nav a:hover { color: #ff4655; }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #ff4655;
-        }
-
-        /* Hero Section */
+        /* ── Hero ── */
         .hero {
             text-align: center;
             padding: 6rem 2rem;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23302b63" width="1200" height="600"/><path fill="%23ff4655" opacity="0.1" d="M0 300L50 280L100 290L150 270L200 285L250 275L300 295L350 280L400 290L450 275L500 285L550 270L600 290L650 275L700 285L750 270L800 290L850 280L900 285L950 275L1000 290L1050 280L1100 285L1150 275L1200 290V600H0Z"/></svg>');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23302b63" width="1200" height="600"/><path fill="%23ff4655" opacity="0.1" d="M0 300L50 280L100 290L150 270L200 285L250 275L300 295L350 280L400 290L450 275L500 285L550 270L600 290L650 275L700 285L750 270L800 290L850 280L900 285L950 275L1000 290L1050 280L1100 285L1150 275L1200 290V600H0Z"/></svg>');
             background-size: cover;
             background-position: center;
         }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(255,70,85,0.5); }
+        .hero-subtitle { font-size: 1.5rem; color: #ff8a00; margin-bottom: 2rem; }
+        .hero-taglines { margin: 2rem 0; font-size: 1.2rem; }
+        .hero-taglines p { margin: 0.5rem 0; opacity: 0.9; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(255, 70, 85, 0.5);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #ff8a00;
-            margin-bottom: 2rem;
-        }
-
-        .hero-taglines {
-            margin: 2rem 0;
-            font-size: 1.2rem;
-        }
-
-        .hero-taglines p {
-            margin: 0.5rem 0;
-            opacity: 0.9;
-        }
-
-        /* Server IP Display */
         .server-info {
             max-width: 600px;
             margin: 3rem auto;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             border: 2px solid #ff4655;
             border-radius: 15px;
             padding: 2rem;
             backdrop-filter: blur(10px);
         }
-
         .server-ip {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.5);
             padding: 1rem;
             border-radius: 10px;
             font-family: 'Courier New', monospace;
@@ -111,11 +76,7 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-
-        .server-ip:hover {
-            background: rgba(255, 70, 85, 0.1);
-            transform: scale(1.02);
-        }
+        .server-ip:hover { background: rgba(255,70,85,0.1); transform: scale(1.02); }
 
         .btn {
             background: linear-gradient(45deg, #ff4655, #ff8a00);
@@ -130,32 +91,21 @@
             display: inline-block;
             margin: 0.5rem;
         }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 70, 85, 0.5);
-        }
-
+        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,70,85,0.5); }
         .discord-btn {
             background: linear-gradient(45deg, #5865F2, #7289da);
             font-size: 1.2rem;
             padding: 1.2rem 3rem;
-            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
+            box-shadow: 0 5px 20px rgba(88,101,242,0.4);
         }
-
         .discord-btn:hover {
             background: linear-gradient(45deg, #4752c4, #5865F2);
-            box-shadow: 0 10px 40px rgba(88, 101, 242, 0.6);
+            box-shadow: 0 10px 40px rgba(88,101,242,0.6);
             transform: scale(1.08);
         }
 
-        /* Features Section */
-        .features-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
-
+        /* ── Features ── */
+        .features-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
         .features-section h2 {
             text-align: center;
             font-size: 2.5rem;
@@ -165,75 +115,46 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
-
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 70, 85, 0.3);
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,70,85,0.3);
             border-radius: 20px;
             padding: 2.5rem;
             backdrop-filter: blur(10px);
             transition: all 0.4s;
             text-align: center;
         }
-
         .feature-card:hover {
             border-color: #ff4655;
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 70, 85, 0.4);
+            box-shadow: 0 15px 40px rgba(255,70,85,0.4);
         }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 10px rgba(255, 138, 0, 0.5));
-        }
-
-        .feature-card h3 {
-            color: #ff8a00;
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-
-        .feature-card > p {
-            color: #ddd;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
+        .feature-icon { font-size: 4rem; margin-bottom: 1rem; filter: drop-shadow(0 0 10px rgba(255,138,0,0.5)); }
+        .feature-card h3 { color: #ff8a00; margin-bottom: 1rem; font-size: 1.6rem; }
+        .feature-card > p { color: #ddd; line-height: 1.6; margin-bottom: 1.5rem; }
 
         .feature-detail {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0,0,0,0.3);
             border-radius: 10px;
             padding: 1.5rem;
             margin-top: 1.5rem;
             text-align: left;
         }
-
-        .feature-detail strong {
-            color: #ff8a00;
-            display: block;
-            margin-bottom: 0.8rem;
-        }
-
-        .feature-detail ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .feature-detail li {
+        .feature-detail strong { color: #ff8a00; display: block; margin-bottom: 0.8rem; }
+        .feature-detail ul { list-style: none; padding: 0; }
+        .feature-detail ul li {
             margin: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
             color: #ccc;
         }
-
-        .feature-detail li:before {
+        .feature-detail ul li::before {
             content: "✓";
             position: absolute;
             left: 0;
@@ -241,37 +162,56 @@
             font-weight: bold;
         }
 
-        .command-box {
-            background: rgba(255, 70, 85, 0.2);
-            border: 1px solid #ff4655;
-            border-radius: 8px;
-            padding: 0.8rem;
-            margin-top: 1rem;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            font-size: 1.1rem;
+        /* Mine Ladder */
+        .mine-ladder { display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.8rem; }
+        .mine-rung {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-left: 3px solid var(--mine-color);
+            border-radius: 0 8px 8px 0;
+            padding: 0.45rem 0.8rem;
+            transition: all 0.25s;
         }
-
-        .command-box span {
-            color: #00ff00;
+        .mine-rung:hover { background: rgba(255,255,255,0.06); transform: translateX(4px); }
+        .mine-num {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--mine-color);
+            color: #000;
+            font-size: 0.7rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
+        .mine-icon { font-size: 1rem; flex-shrink: 0; }
+        .mine-name { flex: 1; font-weight: 600; color: var(--mine-color); font-size: 0.92rem; }
+        .mine-tier-tag {
+            font-size: 0.68rem;
+            font-weight: bold;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .mine-tier-tag.endgame { background: rgba(85,136,255,0.25); color: #88aaff; }
 
+        /* Progression flow */
         .upgrade-info {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 138, 0, 0.5);
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,138,0,0.5);
             border-radius: 20px;
             padding: 2.5rem;
             backdrop-filter: blur(10px);
         }
-
-        .upgrade-info h3 {
-            text-align: center;
-            color: #ff8a00;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
+        .upgrade-info h3 { text-align: center; color: #ff8a00; font-size: 2rem; margin-bottom: 2rem; }
         .progression-flow {
             display: flex;
             justify-content: center;
@@ -279,24 +219,18 @@
             flex-wrap: wrap;
             gap: 1.5rem;
         }
-
         .progress-step {
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: rgba(255, 70, 85, 0.1);
+            background: rgba(255,70,85,0.1);
             padding: 1.5rem;
             border-radius: 15px;
-            border: 2px solid rgba(255, 70, 85, 0.3);
+            border: 2px solid rgba(255,70,85,0.3);
             transition: all 0.3s;
             min-width: 200px;
         }
-
-        .progress-step:hover {
-            border-color: #ff4655;
-            transform: scale(1.05);
-        }
-
+        .progress-step:hover { border-color: #ff4655; transform: scale(1.05); }
         .step-number {
             background: linear-gradient(45deg, #ff4655, #ff8a00);
             width: 50px;
@@ -309,40 +243,12 @@
             font-weight: bold;
             flex-shrink: 0;
         }
+        .step-content h4 { color: #ff8a00; margin-bottom: 0.3rem; }
+        .step-content p { color: #ccc; font-size: 0.9rem; }
+        .progress-arrow { font-size: 2rem; color: #ff4655; font-weight: bold; }
 
-        .step-content h4 {
-            color: #ff8a00;
-            margin-bottom: 0.3rem;
-        }
-
-        .step-content p {
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-
-        .progress-arrow {
-            font-size: 2rem;
-            color: #ff4655;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .progression-flow {
-                flex-direction: column;
-            }
-
-            .progress-arrow {
-                transform: rotate(90deg);
-            }
-        }
-
-        /* Staff Section */
-        .staff-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
-
+        /* ── Staff ── */
+        .staff-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
         .staff-section h2 {
             text-align: center;
             font-size: 2.5rem;
@@ -352,35 +258,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .staff-tier {
-            margin-bottom: 4rem;
-        }
-
-        .tier-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #ff8a00;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 20px rgba(255, 138, 0, 0.5);
-        }
-
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .staff-grid.single-dev {
-            grid-template-columns: 1fr;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
+        .staff-tier { margin-bottom: 4rem; }
+        .tier-title { text-align: center; font-size: 1.8rem; color: #ff8a00; margin-bottom: 2rem; text-shadow: 0 0 20px rgba(255,138,0,0.5); }
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 2rem; }
+        .staff-grid.single-dev { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
         .staff-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 70, 85, 0.3);
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,70,85,0.3);
             border-radius: 20px;
             padding: 2.5rem;
             text-align: center;
@@ -389,178 +273,55 @@
             position: relative;
             overflow: hidden;
         }
-
         .staff-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 70, 85, 0.1), transparent);
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,70,85,0.1), transparent);
             transform: rotate(45deg);
             transition: all 0.6s;
         }
+        .staff-card:hover::before { left: 100%; }
+        .staff-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(255,70,85,0.4); }
 
-        .staff-card:hover::before {
-            left: 100%;
-        }
+        .owner-card { border: 3px solid rgba(255,70,85,0.5); background: linear-gradient(135deg, rgba(255,70,85,0.15), rgba(255,138,0,0.15)); }
+        .owner-card:hover { border-color: #ff4655; box-shadow: 0 20px 50px rgba(255,70,85,0.6); }
+        .coowner-card { border: 3px solid rgba(0,221,255,0.4); background: linear-gradient(135deg, rgba(0,221,255,0.1), rgba(0,170,255,0.1)); }
+        .coowner-card:hover { border-color: #00ddff; box-shadow: 0 20px 50px rgba(0,221,255,0.5); }
+        .dev-card { border: 3px solid rgba(0,255,136,0.4); background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(0,200,100,0.1)); }
+        .dev-card:hover { border-color: #00ff88; box-shadow: 0 20px 50px rgba(0,255,136,0.5); }
 
-        .staff-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(255, 70, 85, 0.4);
-        }
+        .staff-badge { padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem; display: inline-block; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .owner-badge { background: linear-gradient(45deg, #ff4655, #ff8a00); color: white; }
+        .coowner-badge { background: linear-gradient(45deg, #00ddff, #0099ff); color: white; }
+        .dev-badge { background: linear-gradient(45deg, #00ff88, #00cc66); color: white; }
 
-        .owner-card {
-            border: 3px solid rgba(255, 70, 85, 0.5);
-            background: linear-gradient(135deg, rgba(255, 70, 85, 0.15), rgba(255, 138, 0, 0.15));
-        }
-
-        .owner-card:hover {
-            border-color: #ff4655;
-            box-shadow: 0 20px 50px rgba(255, 70, 85, 0.6);
-        }
-
-        .coowner-card {
-            border: 3px solid rgba(0, 221, 255, 0.4);
-            background: linear-gradient(135deg, rgba(0, 221, 255, 0.1), rgba(0, 170, 255, 0.1));
-        }
-
-        .coowner-card:hover {
-            border-color: #00ddff;
-            box-shadow: 0 20px 50px rgba(0, 221, 255, 0.5);
-        }
-
-        .dev-card {
-            border: 3px solid rgba(0, 255, 136, 0.4);
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 100, 0.1));
-        }
-
-        .dev-card:hover {
-            border-color: #00ff88;
-            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.5);
-        }
-
-        .staff-badge {
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .owner-badge {
-            background: linear-gradient(45deg, #ff4655, #ff8a00);
-            color: white;
-        }
-
-        .coowner-badge {
-            background: linear-gradient(45deg, #00ddff, #0099ff);
-            color: white;
-        }
-
-        .dev-badge {
-            background: linear-gradient(45deg, #00ff88, #00cc66);
-            color: white;
-        }
-
-        .staff-avatar {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            border: 4px solid #ff4655;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(255, 70, 85, 0.5);
-            transition: all 0.3s;
-        }
-
+        .staff-avatar { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; border: 4px solid #ff4655; overflow: hidden; box-shadow: 0 10px 30px rgba(255,70,85,0.5); transition: all 0.3s; }
         .owner-card .staff-avatar { border-color: #ff4655; }
         .coowner-card .staff-avatar { border-color: #00ddff; }
         .dev-card .staff-avatar { border-color: #00ff88; }
+        .staff-card:hover .staff-avatar { transform: scale(1.1) rotate(5deg); }
+        .staff-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-        .staff-card:hover .staff-avatar {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .staff-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .staff-card h3 {
-            color: #fff;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .staff-role {
-            color: #ff8a00;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
+        .staff-card h3 { color: #fff; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .staff-role { color: #ff8a00; font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; }
         .coowner-card .staff-role { color: #00ddff; }
         .dev-card .staff-role { color: #00ff88; }
-
-        .staff-description {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .staff-responsibilities {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .responsibility-tag {
-            background: rgba(255, 70, 85, 0.2);
-            border: 1px solid rgba(255, 70, 85, 0.5);
-            color: #fff;
-            padding: 0.4rem 1rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-        }
-
-        .coowner-card .responsibility-tag {
-            background: rgba(0, 221, 255, 0.2);
-            border-color: rgba(0, 221, 255, 0.5);
-        }
-
-        .dev-card .responsibility-tag {
-            background: rgba(0, 255, 136, 0.2);
-            border-color: rgba(0, 255, 136, 0.5);
-        }
-
+        .staff-description { color: #ccc; line-height: 1.6; margin-bottom: 1.5rem; }
+        .staff-responsibilities { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+        .responsibility-tag { background: rgba(255,70,85,0.2); border: 1px solid rgba(255,70,85,0.5); color: #fff; padding: 0.4rem 1rem; border-radius: 15px; font-size: 0.85rem; transition: all 0.3s; }
+        .coowner-card .responsibility-tag { background: rgba(0,221,255,0.2); border-color: rgba(0,221,255,0.5); }
+        .dev-card .responsibility-tag { background: rgba(0,255,136,0.2); border-color: rgba(0,255,136,0.5); }
         .responsibility-tag:hover { transform: scale(1.05); }
-        .owner-card .responsibility-tag:hover { background: rgba(255, 70, 85, 0.4); border-color: #ff4655; }
-        .coowner-card .responsibility-tag:hover { background: rgba(0, 221, 255, 0.4); border-color: #00ddff; }
-        .dev-card .responsibility-tag:hover { background: rgba(0, 255, 136, 0.4); border-color: #00ff88; }
+        .owner-card .responsibility-tag:hover { background: rgba(255,70,85,0.4); border-color: #ff4655; }
+        .coowner-card .responsibility-tag:hover { background: rgba(0,221,255,0.4); border-color: #00ddff; }
+        .dev-card .responsibility-tag:hover { background: rgba(0,255,136,0.4); border-color: #00ff88; }
 
-        .staff-contact {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 138, 0, 0.5);
-            border-radius: 20px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
+        .staff-contact { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,138,0,0.5); border-radius: 20px; padding: 1.5rem; backdrop-filter: blur(10px); }
 
-        /* Rules Section */
-        .rules-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
-
+        /* ── Rules ── */
+        .rules-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
         .rules-section h2 {
             text-align: center;
             font-size: 2.5rem;
@@ -570,56 +331,15 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .rule-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,70,85,0.3); border-radius: 15px; padding: 2rem; backdrop-filter: blur(10px); transition: all 0.3s; }
+        .rule-card:hover { border-color: #ff4655; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255,70,85,0.3); }
+        .rule-card h3 { color: #ff8a00; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .rule-item { margin: 1rem 0; padding-left: 1.5rem; position: relative; }
+        .rule-item::before { content: "▸"; position: absolute; left: 0; color: #ff4655; font-weight: bold; }
 
-        .rules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .rule-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 70, 85, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-
-        .rule-card:hover {
-            border-color: #ff4655;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 70, 85, 0.3);
-        }
-
-        .rule-card h3 {
-            color: #ff8a00;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .rule-item {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .rule-item:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #ff4655;
-            font-weight: bold;
-        }
-
-        /* ===== CHANGELOG SECTION ===== */
-        .changelog-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
-
+        /* ── Changelog ── */
+        .changelog-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
         .changelog-section h2 {
             text-align: center;
             font-size: 2.5rem;
@@ -629,249 +349,71 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .changelog-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
+        .changelog-container { display: flex; flex-direction: column; gap: 2rem; }
         .changelog-entry {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 70, 85, 0.25);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,70,85,0.25);
             border-left: 4px solid #ff4655;
             border-radius: 0 16px 16px 0;
             padding: 2rem 2.5rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s;
-            position: relative;
         }
+        .changelog-entry:hover { border-color: #ff4655; border-left-color: #ff8a00; background: rgba(255,70,85,0.06); transform: translateX(6px); box-shadow: 0 8px 30px rgba(255,70,85,0.2); }
+        .changelog-entry.major { border-left-color: #ff8a00; background: rgba(255,138,0,0.06); }
+        .changelog-entry.major:hover { border-left-color: #ff4655; background: rgba(255,138,0,0.1); }
+        .changelog-entry.staff-update { border-left-color: #00ddff; background: rgba(0,221,255,0.05); }
+        .changelog-entry.staff-update:hover { background: rgba(0,221,255,0.08); border-left-color: #00aaff; }
 
-        .changelog-entry:hover {
-            border-color: #ff4655;
-            border-left-color: #ff8a00;
-            background: rgba(255, 70, 85, 0.06);
-            transform: translateX(6px);
-            box-shadow: 0 8px 30px rgba(255, 70, 85, 0.2);
-        }
-
-        .changelog-entry.major {
-            border-left-color: #ff8a00;
-            background: rgba(255, 138, 0, 0.06);
-        }
-
-        .changelog-entry.major:hover {
-            border-left-color: #ff4655;
-            background: rgba(255, 138, 0, 0.1);
-        }
-
-        .changelog-entry.staff-update {
-            border-left-color: #00ddff;
-            background: rgba(0, 221, 255, 0.05);
-        }
-
-        .changelog-entry.staff-update:hover {
-            background: rgba(0, 221, 255, 0.08);
-            border-left-color: #00aaff;
-        }
-
-        .changelog-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .changelog-tag {
-            font-size: 0.78rem;
-            font-weight: bold;
-            padding: 0.3rem 0.9rem;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .tag-announcement {
-            background: linear-gradient(45deg, #ff4655, #ff8a00);
-            color: #fff;
-        }
-
-        .tag-staff {
-            background: linear-gradient(45deg, #00ddff, #0099ff);
-            color: #fff;
-        }
-
-        .tag-upcoming {
-            background: linear-gradient(45deg, #a855f7, #7c3aed);
-            color: #fff;
-        }
-
-        .tag-overhaul {
-            background: linear-gradient(45deg, #ff8a00, #ff4655);
-            color: #fff;
-            animation: pulse-tag 2s infinite;
-        }
-
+        .changelog-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+        .changelog-tag { font-size: 0.78rem; font-weight: bold; padding: 0.3rem 0.9rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .tag-announcement { background: linear-gradient(45deg, #ff4655, #ff8a00); color: #fff; }
+        .tag-staff { background: linear-gradient(45deg, #00ddff, #0099ff); color: #fff; }
+        .tag-upcoming { background: linear-gradient(45deg, #a855f7, #7c3aed); color: #fff; }
+        .tag-overhaul { background: linear-gradient(45deg, #ff8a00, #ff4655); color: #fff; animation: pulse-tag 2s infinite; }
         @keyframes pulse-tag {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0.4); }
-            50% { box-shadow: 0 0 0 6px rgba(255, 138, 0, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,138,0,0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(255,138,0,0); }
         }
+        .changelog-date { color: #888; font-size: 0.9rem; margin-left: auto; }
+        .changelog-title { font-size: 1.4rem; font-weight: bold; color: #fff; margin-bottom: 0.8rem; }
+        .changelog-entry.staff-update .changelog-title { color: #00ddff; }
+        .changelog-body { color: #ccc; line-height: 1.7; font-size: 0.98rem; }
+        .changelog-body p { margin-bottom: 0.8rem; }
+        .changelog-list { list-style: none; padding: 0; margin: 0.8rem 0; }
+        .changelog-list li { padding: 0.4rem 0 0.4rem 1.6rem; position: relative; color: #ccc; }
+        .changelog-list li::before { content: "•"; position: absolute; left: 0.4rem; color: #ff4655; font-weight: bold; }
+        .changelog-entry.staff-update .changelog-list li::before { color: #00ddff; }
+        .changelog-entry.major .changelog-list li::before { color: #ff8a00; }
+        .changelog-subhead { color: #ff8a00; font-weight: bold; margin: 1.2rem 0 0.5rem; font-size: 1rem; }
+        .changelog-entry.staff-update .changelog-subhead { color: #00ddff; }
 
-        .changelog-date {
-            color: #888;
-            font-size: 0.9rem;
-            margin-left: auto;
-        }
+        .role-change { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.5rem 1rem; margin: 0.3rem 0; font-family: 'Courier New', monospace; font-size: 0.9rem; }
+        .role-old { color: #aaa; text-decoration: line-through; }
+        .role-arrow { color: #ff8a00; }
+        .role-new { color: #00ff88; font-weight: bold; }
 
-        .changelog-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 0.8rem;
-        }
+        .changelog-ping { display: inline-block; background: rgba(88,101,242,0.25); border: 1px solid rgba(88,101,242,0.4); color: #7289da; padding: 0.2rem 0.6rem; border-radius: 5px; font-size: 0.9rem; margin-bottom: 0.8rem; font-weight: bold; }
+        .coming-soon-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(168,85,247,0.2); border: 1px solid rgba(168,85,247,0.4); color: #c084fc; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem; }
 
-        .changelog-entry.staff-update .changelog-title {
-            color: #00ddff;
-        }
-
-        .changelog-body {
-            color: #ccc;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        .changelog-body p {
-            margin-bottom: 0.8rem;
-        }
-
-        .changelog-list {
-            list-style: none;
-            padding: 0;
-            margin: 0.8rem 0;
-        }
-
-        .changelog-list li {
-            padding: 0.4rem 0 0.4rem 1.6rem;
-            position: relative;
-            color: #ccc;
-        }
-
-        .changelog-list li:before {
-            content: "•";
-            position: absolute;
-            left: 0.4rem;
-            color: #ff4655;
-            font-weight: bold;
-        }
-
-        .changelog-entry.staff-update .changelog-list li:before {
-            color: #00ddff;
-        }
-
-        .changelog-entry.major .changelog-list li:before {
-            color: #ff8a00;
-        }
-
-        .changelog-subhead {
-            color: #ff8a00;
-            font-weight: bold;
-            margin: 1.2rem 0 0.5rem;
-            font-size: 1rem;
-        }
-
-        .changelog-entry.staff-update .changelog-subhead {
-            color: #00ddff;
-        }
-
-        .role-change {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0,0,0,0.3);
-            border-radius: 8px;
-            padding: 0.5rem 1rem;
-            margin: 0.3rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        .role-old {
-            color: #aaa;
-            text-decoration: line-through;
-        }
-
-        .role-arrow {
-            color: #ff8a00;
-        }
-
-        .role-new {
-            color: #00ff88;
-            font-weight: bold;
-        }
-
-        .changelog-ping {
-            display: inline-block;
-            background: rgba(88, 101, 242, 0.25);
-            border: 1px solid rgba(88, 101, 242, 0.4);
-            color: #7289da;
-            padding: 0.2rem 0.6rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            font-weight: bold;
-        }
-
-        .coming-soon-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(168, 85, 247, 0.2);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            color: #c084fc;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 2px solid #ff4655;
-        }
-
-        .copy-notification {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #00ff00;
-            color: #000;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .copy-notification.show {
-            opacity: 1;
-        }
+        /* ── Footer ── */
+        footer { background: rgba(0,0,0,0.8); text-align: center; padding: 2rem; margin-top: 4rem; border-top: 2px solid #ff4655; }
+        .copy-notification { position: fixed; bottom: 2rem; right: 2rem; background: #00ff00; color: #000; padding: 1rem 2rem; border-radius: 10px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .copy-notification.show { opacity: 1; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1.2rem; }
             nav { display: none; }
+            .progression-flow { flex-direction: column; }
+            .progress-arrow { transform: rotate(90deg); }
             .changelog-header { flex-direction: column; align-items: flex-start; }
             .changelog-date { margin-left: 0; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="header-content">
             <div class="logo">🔥 INCINERATOR</div>
@@ -885,6 +427,7 @@
         </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero" id="home">
         <h1>INCINERATOR BOXPVP</h1>
         <p class="hero-subtitle">ENTER THE ARENA</p>
@@ -893,120 +436,168 @@
             <p>🏆 Dominate every match.</p>
             <p>👑 Show everyone who's boss.</p>
         </div>
-        <p style="font-size: 1.3rem; margin-top: 2rem;">Are you ready to become the ultimate BoxPvP champion?</p>
-        
+        <p style="font-size:1.3rem; margin-top:2rem;">Are you ready to become the ultimate BoxPvP champion?</p>
         <div class="server-info">
-            <h2 style="text-align: center; margin-bottom: 1.5rem;">Server Connection</h2>
+            <h2 style="text-align:center; margin-bottom:1.5rem;">Server Connection</h2>
             <div class="server-ip" onclick="copyIP()" title="Click to copy">
                 <strong>IP:</strong> IncineratorBox.aternos.me
             </div>
-            <div style="text-align: center; color: #aaa; margin-top: 1rem;">
-                <strong>Version:</strong> 1.21.x
-            </div>
+            <div style="text-align:center; color:#aaa; margin-top:1rem;"><strong>Version:</strong> 1.21.x</div>
         </div>
-        
-        <div style="margin-top: 2rem;">
+        <div style="margin-top:2rem;">
             <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
-                <span style="font-size: 1.3rem; margin-right: 0.5rem;">💬</span> Join Our Discord
+                <span style="font-size:1.3rem; margin-right:0.5rem;">💬</span> Join Our Discord
             </a>
         </div>
     </section>
 
+    <!-- FEATURES -->
     <section class="features-section" id="features">
         <h2>🎮 SERVER FEATURES</h2>
-        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+        <p style="text-align:center; margin-bottom:3rem; font-size:1.1rem; color:#ff8a00;">
             Explore our unique game mechanics and progression systems!
         </p>
 
         <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Incinerator Heart Currency</h3>
-                <p>Mine resources to earn Incinerator Hearts! Resources automatically compress into currency when you collect enough blocks. Progress through different mine tiers to unlock better rewards.</p>
-                <div class="feature-detail">
-                    <p><strong>🔥 Auto-Compression Rates:</strong></p>
-                    <ul>
-                        <li>52 Oak Logs → 1 Heart</li>
-                        <li>48 Polished Blackstone → 1 Heart</li>
-                        <li>42 Coal Blocks → 1 Heart</li>
-                        <li>38 Copper Blocks → 1 Heart</li>
-                        <li>36 Iron Blocks → 1 Heart</li>
-                        <li>32 Gold Blocks → 1 Heart</li>
-                        <li>28 Diamond Blocks → 1 Heart</li>
-                        <li>24 Emerald Blocks → 1 Heart</li>
-                        <li>20 Lapis Blocks → 1 Heart</li>
-                    </ul>
-                </div>
-            </div>
 
+            <!-- 8 Mines -->
             <div class="feature-card">
                 <div class="feature-icon">⛏️</div>
-                <h3>Mine & Pickaxe Upgrades</h3>
-                <p>Progress through 9 mine tiers, each requiring better pickaxes! Upgrade your pickaxe with the <code>/tools</code> command. Note: Pickaxe upgrades cost <strong>2x</strong> the normal rate!</p>
+                <h3>8 Overworld Mines</h3>
+                <p>Start at the Wood Mine and grind your way up through 8 progressively harder mines. Each mine rewards better resources — the further you go, the stronger you become.</p>
                 <div class="feature-detail">
-                    <p><strong>⛏️ Mine Progression Tiers:</strong></p>
-                    <ul>
-                        <li><span style="color: #fff;">Wood Mine</span> → Starter Items</li>
-                        <li><span style="color: #aaa;">Stone Mine</span> → Kindling Items</li>
-                        <li><span style="color: #333;">Coal Mine</span> → Ember Items</li>
-                        <li><span style="color: #ff8844;">Copper Mine</span> → Cinder Items</li>
-                        <li><span style="color: #ddd;">Iron Mine</span> → Singeing Items</li>
-                        <li><span style="color: #ffdd00;">Gold Mine</span> → Blazing Items</li>
-                        <li><span style="color: #55ffff;">Diamond Mine</span> → Scorching Items</li>
-                        <li><span style="color: #00ff00;">Emerald Mine</span> → Inferno Items</li>
-                        <li><span style="color: #5555ff;">Lapis Mine</span> → HellFire Items</li>
-                    </ul>
-                    <div class="command-box">Command: <span>/tools</span></div>
+                    <strong>🗺️ Mine Progression (Easiest → Hardest):</strong>
+                    <div class="mine-ladder">
+                        <div class="mine-rung" style="--mine-color:#c8a96e;">
+                            <span class="mine-num">1</span>
+                            <span class="mine-icon">🪵</span>
+                            <span class="mine-name">Wood Mine</span>
+                            <span class="mine-tier-tag">Starter</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#aaaaaa;">
+                            <span class="mine-num">2</span>
+                            <span class="mine-icon">🪨</span>
+                            <span class="mine-name">Stone Mine</span>
+                            <span class="mine-tier-tag">Basic</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#888888;">
+                            <span class="mine-num">3</span>
+                            <span class="mine-icon">🖤</span>
+                            <span class="mine-name">Coal Mine</span>
+                            <span class="mine-tier-tag">Common</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#d4d4d4;">
+                            <span class="mine-num">4</span>
+                            <span class="mine-icon">🔩</span>
+                            <span class="mine-name">Iron Mine</span>
+                            <span class="mine-tier-tag">Uncommon</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#ffd700;">
+                            <span class="mine-num">5</span>
+                            <span class="mine-icon">✨</span>
+                            <span class="mine-name">Gold Mine</span>
+                            <span class="mine-tier-tag">Rare</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#55ffff;">
+                            <span class="mine-num">6</span>
+                            <span class="mine-icon">💎</span>
+                            <span class="mine-name">Diamond Mine</span>
+                            <span class="mine-tier-tag">Epic</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#00ff77;">
+                            <span class="mine-num">7</span>
+                            <span class="mine-icon">💚</span>
+                            <span class="mine-name">Emerald Mine</span>
+                            <span class="mine-tier-tag">Legendary</span>
+                        </div>
+                        <div class="mine-rung" style="--mine-color:#5588ff;">
+                            <span class="mine-num">8</span>
+                            <span class="mine-icon">🔷</span>
+                            <span class="mine-name">Lapis Mine</span>
+                            <span class="mine-tier-tag endgame">Endgame</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <!-- Custom Currency -->
+            <div class="feature-card">
+                <div class="feature-icon">🪙</div>
+                <h3>Custom Currency</h3>
+                <p>Forget boring vanilla currency. Incinerator uses a unique <strong>custom currency</strong> system built from the ground up — earned by grinding mines and used across the entire server economy.</p>
+                <div class="feature-detail">
+                    <strong>💡 How It Works:</strong>
+                    <ul>
+                        <li>Earn custom currency by mining in the overworld</li>
+                        <li>Higher mines reward more currency per block</li>
+                        <li>Spend it on upgrades, crates, and more</li>
+                        <li>A fully custom economy — no boring defaults</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Crates -->
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Crate System</h3>
+                <p>Crack open crates to score exclusive loot you can't get anywhere else. Earn keys through grinding, events, and rewards — then spin for a chance at rare gear and goodies.</p>
+                <div class="feature-detail">
+                    <strong>🎁 What Crates Offer:</strong>
+                    <ul>
+                        <li>Exclusive items not available in shops</li>
+                        <li>Rare gear and combat upgrades</li>
+                        <li>Currency bonuses and special rewards</li>
+                        <li>Keys earned through gameplay &amp; events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gear Upgrades -->
             <div class="feature-card">
                 <div class="feature-icon">⚔️</div>
-                <h3>Combat Gear Upgrades</h3>
-                <p>Upgrade your armor and sword using the <code>/upgrade</code> command with Incinerator Hearts (tokens). Progress through 10 tiers from Starter to Abyssal Flame!</p>
+                <h3>Gear Upgrades</h3>
+                <p>Power up your armor and weapons through a fully custom upgrading system. The stronger the mine you grind, the better gear you can work towards. Details coming soon!</p>
                 <div class="feature-detail">
-                    <p><strong>⚔️ Upgrade Costs (Armor & Sword):</strong></p>
+                    <strong>🔥 What's Being Built:</strong>
                     <ul>
-                        <li>Tier 1: Starter Items → FREE</li>
-                        <li>Tier 2: Kindling Items → 8 Tokens</li>
-                        <li>Tier 3: Ember Items → 12 Tokens</li>
-                        <li>Tier 4: Cinder Items → 16 Tokens</li>
-                        <li>Tier 5: Singeing Items → 32 Tokens</li>
-                        <li>Tier 6: Blazing Items → 48 Tokens</li>
-                        <li>Tier 7: Scorching Items → 64 Tokens</li>
-                        <li>Tier 8: Inferno Items → 72 Tokens</li>
-                        <li>Tier 9: HellFire Items → 84 Tokens</li>
-                        <li>Tier 10: Abyssal Flame → 92 Tokens</li>
+                        <li>Advanced custom upgrading system</li>
+                        <li>Rare materials required for top-tier gear</li>
+                        <li>Rewarding progression from weak to unstoppable</li>
+                        <li>Full details revealed after server overhaul</li>
                     </ul>
-                    <div class="command-box">Command: <span>/upgrade</span></div>
+                    <div style="margin-top:1rem; background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.4); border-radius:8px; padding:0.7rem 1rem; font-size:0.88rem; color:#c084fc; text-align:center;">
+                        ⚠️ Upgrade costs &amp; full details coming after the reset
+                    </div>
                 </div>
             </div>
+
         </div>
 
+        <!-- Progression Flow -->
         <div class="upgrade-info">
             <h3>⚡ How Progression Works</h3>
             <div class="progression-flow">
                 <div class="progress-step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h4>Mine Resources</h4>
-                        <p>Collect blocks in the mines (auto-compresses to Hearts)</p>
+                        <h4>Enter a Mine</h4>
+                        <p>Start at the Wood Mine and work your way up</p>
                     </div>
                 </div>
                 <div class="progress-arrow">→</div>
                 <div class="progress-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h4>Earn Hearts</h4>
-                        <p>Trade Incinerator Hearts for upgrades</p>
+                        <h4>Earn Currency</h4>
+                        <p>Mine blocks to collect custom currency</p>
                     </div>
                 </div>
                 <div class="progress-arrow">→</div>
                 <div class="progress-step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h4>Upgrade Gear</h4>
-                        <p>Use /tools (pickaxe) or /upgrade (combat gear)</p>
+                        <h4>Upgrade &amp; Open Crates</h4>
+                        <p>Spend currency on gear upgrades and crate keys</p>
                     </div>
                 </div>
                 <div class="progress-arrow">→</div>
@@ -1014,23 +605,20 @@
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h4>Dominate!</h4>
-                        <p>Access higher mines and become stronger!</p>
+                        <p>Reach higher mines and crush your enemies</p>
                     </div>
                 </div>
             </div>
-            <p style="margin-top: 2rem; text-align: center; color: #ff8a00; font-size: 1.1rem;">
-                💡 <strong>Pro Tip:</strong> Pickaxe upgrades cost 2x normal tokens, but unlock access to better mines!
-            </p>
         </div>
     </section>
 
+    <!-- STAFF -->
     <section class="staff-section" id="staff">
         <h2>👑 OUR STAFF TEAM</h2>
-        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+        <p style="text-align:center; margin-bottom:3rem; font-size:1.1rem; color:#ff8a00;">
             Meet the dedicated team behind Incinerator BoxPvP
         </p>
 
-        <!-- Owners -->
         <div class="staff-tier">
             <h3 class="tier-title">⭐ SERVER OWNERS ⭐</h3>
             <div class="staff-grid">
@@ -1048,7 +636,6 @@
                         <span class="responsibility-tag">Server Architecture</span>
                     </div>
                 </div>
-
                 <div class="staff-card owner-card">
                     <div class="staff-badge owner-badge">👑 OWNER</div>
                     <div class="staff-avatar">
@@ -1066,7 +653,6 @@
             </div>
         </div>
 
-        <!-- Co-Owners -->
         <div class="staff-tier">
             <h3 class="tier-title">💎 CO-OWNERS 💎</h3>
             <div class="staff-grid">
@@ -1084,7 +670,6 @@
                         <span class="responsibility-tag">Moderation</span>
                     </div>
                 </div>
-
                 <div class="staff-card coowner-card">
                     <div class="staff-badge coowner-badge">💎 CO-OWNER</div>
                     <div class="staff-avatar">
@@ -1102,7 +687,6 @@
             </div>
         </div>
 
-        <!-- Developer -->
         <div class="staff-tier">
             <h3 class="tier-title">⚙️ DEVELOPMENT TEAM ⚙️</h3>
             <div class="staff-grid single-dev">
@@ -1125,27 +709,27 @@
         </div>
 
         <div class="staff-contact">
-            <p style="text-align: center; font-size: 1.1rem; color: #ddd;">
+            <p style="text-align:center; font-size:1.1rem; color:#ddd;">
                 🎮 Need help? Our staff team is here for you! Reach out in-game or through Discord.
             </p>
-            <p style="text-align: center; margin-top: 1rem; font-size: 1rem;">
-                <strong style="color: #ff8a00;">Email Support:</strong><br>
-                <a href="mailto:incineratorboxpvp@gmail.com" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
+            <p style="text-align:center; margin-top:1rem; font-size:1rem;">
+                <strong style="color:#ff8a00;">Email Support:</strong><br>
+                <a href="mailto:incineratorboxpvp@gmail.com" style="color:#00ddff; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
                     📧 incineratorboxpvp@gmail.com
                 </a>
             </p>
         </div>
     </section>
 
+    <!-- RULES -->
     <section class="rules-section" id="rules">
         <h2>⚖️ SERVER RULES</h2>
-        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+        <p style="text-align:center; margin-bottom:3rem; font-size:1.1rem; color:#ff8a00;">
             Read carefully. Breaking rules may result in warnings, kicks, or permanent bans. Play fair, fight hard, and dominate the arena!
         </p>
-
         <div class="rules-grid">
             <div class="rule-card">
-                <h3>Rules 1-9: General Conduct</h3>
+                <h3>Rules 1–9: General Conduct</h3>
                 <div class="rule-item">Be respectful to all players.</div>
                 <div class="rule-item">No harassment, hate speech, or discrimination.</div>
                 <div class="rule-item">No spamming chat, excessive caps, or flooding.</div>
@@ -1156,9 +740,8 @@
                 <div class="rule-item">No glitching arenas, items, or mechanics.</div>
                 <div class="rule-item">Use only allowed mods/plugins.</div>
             </div>
-
             <div class="rule-card">
-                <h3>Rules 10-17: Gameplay</h3>
+                <h3>Rules 10–17: Gameplay</h3>
                 <div class="rule-item">PvP is fair play: no teaming in solo modes.</div>
                 <div class="rule-item">Respect arena mechanics and boundaries.</div>
                 <div class="rule-item">No blocking spawn areas or traps.</div>
@@ -1168,9 +751,8 @@
                 <div class="rule-item">No scamming or stealing from other players.</div>
                 <div class="rule-item">No item or currency duplication.</div>
             </div>
-
             <div class="rule-card">
-                <h3>Rules 18-25: Economy & Community</h3>
+                <h3>Rules 18–25: Economy &amp; Community</h3>
                 <div class="rule-item">Use server shops and economy fairly.</div>
                 <div class="rule-item">No advertising other servers.</div>
                 <div class="rule-item">Follow instructions from staff members.</div>
@@ -1181,33 +763,30 @@
                 <div class="rule-item">Have fun and maintain a positive community environment.</div>
             </div>
         </div>
-
-        <p style="text-align: center; font-size: 1.2rem; color: #ff4655; margin-top: 2rem;">
+        <p style="text-align:center; font-size:1.2rem; color:#ff4655; margin-top:2rem;">
             ⚠️ Breaking these rules can result in warnings, kicks, or permanent bans. Respect the server and dominate! ⚠️
         </p>
     </section>
 
-    <!-- ===== CHANGELOG SECTION ===== -->
+    <!-- CHANGELOG -->
     <section class="changelog-section" id="changelog">
         <h2>📋 CHANGELOG</h2>
-        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ff8a00;">
+        <p style="text-align:center; margin-bottom:3rem; font-size:1.1rem; color:#ff8a00;">
             Stay up to date with the latest server updates, announcements, and changes.
         </p>
 
         <div class="changelog-container">
 
-            <!-- Entry 1: Overhaul Announcement -->
             <div class="changelog-entry major">
                 <div class="changelog-header">
                     <span class="changelog-tag tag-overhaul">🔥 MAJOR ANNOUNCEMENT</span>
                     <span class="changelog-tag tag-upcoming">⚡ Upcoming</span>
                     <span class="changelog-date">2026</span>
                 </div>
-                <div class="changelog-title">Complete Server Overhaul & Reset Announcement</div>
+                <div class="changelog-title">Complete Server Overhaul &amp; Reset Announcement</div>
                 <div class="changelog-body">
                     <div class="changelog-ping">@everyone</div>
                     <p>A complete overhaul of the server is incoming. <strong>Everything will be reset</strong> and we'll be starting fresh. The features listed below will be included along with several new systems — a new upgrading system, a fully hand-built map, and major lag fixes to improve performance and stability.</p>
-
                     <p class="changelog-subhead">🗺️ What's Coming:</p>
                     <ul class="changelog-list">
                         <li>More mines for the overworld <em>(Nether is delayed — something big is planned)</em></li>
@@ -1217,22 +796,53 @@
                         <li>A new grinding area: <strong>AngelFalls</strong></li>
                         <li>Possible circular map layout redesign</li>
                     </ul>
-
                     <p class="changelog-subhead">⚙️ Additional Features Planned:</p>
                     <ul class="changelog-list">
                         <li>Reworked economy with better balance and money sinks</li>
-                        <li>Advanced upgrading & crafting system with rarer materials</li>
+                        <li>Advanced upgrading &amp; crafting system with rarer materials</li>
                         <li>High-risk / high-reward PvP and grinding zones</li>
                         <li>Player-driven market and auction improvements</li>
                         <li>Seasonal challenges with exclusive progression rewards</li>
                         <li>Optimized anti-cheat and server stability upgrades</li>
                     </ul>
-
-                    <p style="margin-top: 1rem; color: #ff8a00; font-style: italic;">Many more updates are planned. This reset is meant to rebuild the server into something bigger, smoother, and more competitive.</p>
+                    <p style="margin-top:1rem; color:#ff8a00; font-style:italic;">Many more updates are planned. This reset is meant to rebuild the server into something bigger, smoother, and more competitive.</p>
                 </div>
             </div>
 
-            <!-- Entry 2: Staff Role Changes -->
+            <div class="changelog-entry">
+                <div class="changelog-header">
+                    <span class="changelog-tag tag-announcement">🎮 Features Update</span>
+                    <span class="changelog-date">2026</span>
+                </div>
+                <div class="changelog-title">Progression System &amp; Features Reworked</div>
+                <div class="changelog-body">
+                    <p>The server features section has been updated to reflect the upcoming overhaul. Old placeholder info removed, replaced with what's actually planned.</p>
+                    <p class="changelog-subhead">⛏️ Overworld Mines — 8 Tiers Confirmed:</p>
+                    <ul class="changelog-list">
+                        <li>Wood → Stone → Coal → Iron → Gold → Diamond → Emerald → Lapis</li>
+                        <li>Progression goes Easiest → Hardest — easier start, brutal endgame</li>
+                        <li>Higher mines reward more currency per block mined</li>
+                    </ul>
+                    <p class="changelog-subhead">🪙 Custom Currency:</p>
+                    <ul class="changelog-list">
+                        <li>Old currency system removed</li>
+                        <li>New fully custom currency being built from scratch</li>
+                        <li>Earned through mining, spent on upgrades and crates</li>
+                    </ul>
+                    <p class="changelog-subhead">📦 Crate System Added:</p>
+                    <ul class="changelog-list">
+                        <li>Brand new crate system coming with the overhaul</li>
+                        <li>Keys earned through grinding and events</li>
+                        <li>Exclusive loot not available anywhere else</li>
+                    </ul>
+                    <p class="changelog-subhead">⚔️ Gear Upgrades:</p>
+                    <ul class="changelog-list">
+                        <li>Old upgrade cost table removed — system is still being designed</li>
+                        <li>Full details will be revealed after the reset</li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="changelog-entry staff-update">
                 <div class="changelog-header">
                     <span class="changelog-tag tag-staff">👥 Staff Update</span>
@@ -1241,9 +851,8 @@
                 <div class="changelog-title">Staff Role Changes</div>
                 <div class="changelog-body">
                     <p>The following staff members have had their roles updated. All other staff remain unchanged.</p>
-
                     <p class="changelog-subhead">🔄 Role Changes:</p>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin: 0.8rem 0;">
+                    <div style="display:flex; flex-direction:column; gap:0.5rem; margin:0.8rem 0;">
                         <div class="role-change">
                             <span>🎮 Cart</span>
                             <span class="role-old">2nd Co-Owner</span>
@@ -1257,42 +866,40 @@
                             <span class="role-new">💎 2nd Co-Owner</span>
                         </div>
                     </div>
-                    <p style="color: #888; font-size: 0.9rem; margin-top: 0.8rem;">All other staff members (Afaque, GistheKey, Jotmar) remain in their current roles.</p>
+                    <p style="color:#888; font-size:0.9rem; margin-top:0.8rem;">All other staff members (Afaque, GistheKey, Jotmar) remain in their current roles.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-        <div style="margin-bottom: 1.5rem;">
+        <div style="margin-bottom:1.5rem;">
             <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
-                <span style="font-size: 1.2rem; margin-right: 0.5rem;">💬</span> Join Our Discord
+                <span style="font-size:1.2rem; margin-right:0.5rem;">💬</span> Join Our Discord
             </a>
         </div>
-        <p style="margin-bottom: 1rem;">
-            <strong style="color: #ff8a00;">Need Help?</strong><br>
-            <a href="mailto:incineratorboxpvp@gmail.com" style="color: #00ddff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
+        <p style="margin-bottom:1rem;">
+            <strong style="color:#ff8a00;">Need Help?</strong><br>
+            <a href="mailto:incineratorboxpvp@gmail.com" style="color:#00ddff; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ddff'">
                 📧 incineratorboxpvp@gmail.com
             </a>
         </p>
         <p>&copy; 2026 Incinerator BoxPvP. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; color: #aaa;">Fight like a legend. Dominate the arena.</p>
+        <p style="margin-top:0.5rem; color:#aaa;">Fight like a legend. Dominate the arena.</p>
     </footer>
 
-    <div class="copy-notification" id="copyNotification">
-        ✓ Server IP copied to clipboard!
-    </div>
+    <div class="copy-notification" id="copyNotification">✓ Server IP copied to clipboard!</div>
 
     <script>
-    function copyIP() {
-        const ip = "IncineratorBox.aternos.me";
-        navigator.clipboard.writeText(ip).then(() => {
-            const notification = document.getElementById('copyNotification');
-            notification.classList.add('show');
-            setTimeout(() => notification.classList.remove('show'), 2000);
-        });
-    }
+        function copyIP() {
+            navigator.clipboard.writeText("IncineratorBox.aternos.me").then(() => {
+                const n = document.getElementById('copyNotification');
+                n.classList.add('show');
+                setTimeout(() => n.classList.remove('show'), 2000);
+            });
+        }
     </script>
 </body>
 </html>
