@@ -57,7 +57,7 @@
         .hero-taglines p { margin: 0.5rem 0; opacity: 0.9; }
 
         .server-info {
-            max-width: 600px;
+            max-width: 700px;
             margin: 3rem auto;
             background: rgba(255,255,255,0.05);
             border: 2px solid #ff4655;
@@ -65,18 +65,70 @@
             padding: 2rem;
             backdrop-filter: blur(10px);
         }
+        .server-info h2 { text-align: center; margin-bottom: 1.5rem; }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 600px) { .connection-grid { grid-template-columns: 1fr; } }
+
+        .connection-block {
+            background: rgba(0,0,0,0.4);
+            border-radius: 12px;
+            padding: 1.2rem;
+            border: 1px solid rgba(255,70,85,0.4);
+        }
+        .connection-block .block-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #ff8a00;
+            font-weight: bold;
+            margin-bottom: 0.6rem;
+        }
         .server-ip {
             background: rgba(0,0,0,0.5);
-            padding: 1rem;
-            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
             font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            border: 1px solid #ff4655;
-            cursor: pointer;
-            transition: all 0.3s;
+            font-size: 1rem;
+            margin: 0.4rem 0;
+            border: 1px solid rgba(255,70,85,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
         }
-        .server-ip:hover { background: rgba(255,70,85,0.1); transform: scale(1.02); }
+        .server-ip span { flex: 1; }
+        .copy-btn {
+            background: rgba(255,70,85,0.2);
+            border: 1px solid rgba(255,70,85,0.5);
+            color: #ff8a00;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .copy-btn:hover { background: rgba(255,70,85,0.4); color: #fff; }
+        .copy-btn.copied { background: rgba(0,255,100,0.2); border-color: #00ff88; color: #00ff88; }
+
+        .bedrock-note {
+            text-align: center;
+            font-size: 0.88rem;
+            color: #aaa;
+            margin-top: 0.8rem;
+            padding: 0.6rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+        .bedrock-note strong { color: #ff8a00; }
 
         .btn {
             background: linear-gradient(45deg, #ff4655, #ff8a00);
@@ -203,6 +255,36 @@
         }
         .mine-tier-tag.endgame { background: rgba(85,136,255,0.25); color: #88aaff; }
 
+        /* Aurex Progression */
+        .aurex-ladder { display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.8rem; }
+        .aurex-rung {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,200,50,0.15);
+            border-left: 3px solid var(--aurex-color);
+            border-radius: 0 8px 8px 0;
+            padding: 0.45rem 0.8rem;
+            transition: all 0.25s;
+        }
+        .aurex-rung:hover { background: rgba(255,200,50,0.06); transform: translateX(4px); }
+        .aurex-step {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--aurex-color);
+            color: #000;
+            font-size: 0.65rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .aurex-name { flex: 1; font-weight: 600; color: var(--aurex-color); font-size: 0.9rem; }
+        .aurex-arrow { color: #ff8a00; font-size: 0.8rem; }
+
         /* Progression flow */
         .upgrade-info {
             background: rgba(255,255,255,0.05);
@@ -246,6 +328,140 @@
         .step-content h4 { color: #ff8a00; margin-bottom: 0.3rem; }
         .step-content p { color: #ccc; font-size: 0.9rem; }
         .progress-arrow { font-size: 2rem; color: #ff4655; font-weight: bold; }
+
+        /* ── Bosses & Combat ── */
+        .bosses-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
+        .bosses-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bosses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .boss-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .boss-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--boss-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.6;
+            transition: opacity 0.4s;
+        }
+        .boss-card:hover::before { opacity: 1; }
+        .boss-card:hover { transform: translateY(-10px); box-shadow: var(--boss-shadow); }
+        .boss-icon { font-size: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 0 15px var(--boss-glow)); }
+        .boss-name { font-size: 1.7rem; font-weight: bold; color: var(--boss-name-color); margin-bottom: 0.5rem; }
+        .boss-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 1.2rem; }
+        .boss-desc { color: #ccc; line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .boss-difficulty {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: rgba(0,0,0,0.35);
+            border: 1px solid var(--boss-glow);
+            color: var(--boss-glow);
+        }
+
+        .boss-forger   { --boss-gradient: linear-gradient(135deg,#ff8a00,#ff4655); --boss-shadow: 0 15px 40px rgba(255,138,0,0.4); --boss-glow: #ff8a00; --boss-name-color: #ffaa33; }
+        .boss-glacial  { --boss-gradient: linear-gradient(135deg,#00ddff,#0055ff); --boss-shadow: 0 15px 40px rgba(0,200,255,0.4); --boss-glow: #00ddff; --boss-name-color: #55eeff; }
+        .boss-cyro     { --boss-gradient: linear-gradient(135deg,#8855ff,#00ddff); --boss-shadow: 0 15px 40px rgba(136,85,255,0.4); --boss-glow: #aa77ff; --boss-name-color: #cc99ff; }
+
+        .combat-note {
+            margin-top: 3rem;
+            background: rgba(255,70,85,0.07);
+            border: 2px solid rgba(255,70,85,0.35);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .combat-note p { color: #ccc; font-size: 1rem; line-height: 1.7; }
+        .combat-note strong { color: #ff8a00; }
+
+        /* ── Worlds & Progression ── */
+        .worlds-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
+        .worlds-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4655, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .worlds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .world-card {
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .world-card.active-world {
+            background: linear-gradient(135deg, rgba(255,70,85,0.12), rgba(255,138,0,0.12));
+            border: 2px solid rgba(255,138,0,0.5);
+        }
+        .world-card.future-world {
+            background: rgba(255,255,255,0.03);
+            border: 2px dashed rgba(255,255,255,0.15);
+        }
+        .world-card:hover { transform: translateY(-8px); }
+        .world-card.active-world:hover { box-shadow: 0 15px 40px rgba(255,138,0,0.35); }
+        .world-card.future-world:hover { box-shadow: 0 15px 40px rgba(100,100,255,0.2); border-color: rgba(100,100,255,0.4); }
+        .world-icon { font-size: 4rem; margin-bottom: 1rem; filter: drop-shadow(0 0 12px rgba(255,138,0,0.5)); }
+        .world-card.future-world .world-icon { filter: grayscale(0.6) drop-shadow(0 0 8px rgba(100,100,255,0.4)); }
+        .world-name { font-size: 1.8rem; font-weight: bold; color: #ff8a00; margin-bottom: 0.4rem; }
+        .world-card.future-world .world-name { color: #888; }
+        .world-status-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 1.2rem;
+        }
+        .badge-live { background: linear-gradient(45deg,#00ff88,#00cc66); color: #000; }
+        .badge-upcoming { background: rgba(168,85,247,0.25); border: 1px solid rgba(168,85,247,0.5); color: #c084fc; }
+        .world-desc { color: #ccc; line-height: 1.6; font-size: 0.95rem; }
+        .world-features { list-style: none; padding: 0; margin-top: 1.2rem; text-align: left; }
+        .world-features li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; color: #ccc; font-size: 0.9rem; }
+        .world-features li::before { content: "▸"; position: absolute; left: 0; color: #ff4655; font-weight: bold; }
 
         /* ── Staff ── */
         .staff-section { max-width: 1200px; margin: 4rem auto; padding: 2rem; }
@@ -398,7 +614,7 @@
 
         /* ── Footer ── */
         footer { background: rgba(0,0,0,0.8); text-align: center; padding: 2rem; margin-top: 4rem; border-top: 2px solid #ff4655; }
-        .copy-notification { position: fixed; bottom: 2rem; right: 2rem; background: #00ff00; color: #000; padding: 1rem 2rem; border-radius: 10px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .copy-notification { position: fixed; bottom: 2rem; right: 2rem; background: #00ff00; color: #000; padding: 1rem 2rem; border-radius: 10px; opacity: 0; transition: opacity 0.3s; pointer-events: none; font-weight: bold; }
         .copy-notification.show { opacity: 1; }
 
         @media (max-width: 768px) {
@@ -420,6 +636,8 @@
             <nav>
                 <a href="#home">Home</a>
                 <a href="#features">Features</a>
+                <a href="#bosses">Bosses</a>
+                <a href="#worlds">Worlds</a>
                 <a href="#staff">Staff</a>
                 <a href="#rules">Rules</a>
                 <a href="#changelog">Changelog</a>
@@ -437,15 +655,43 @@
             <p>👑 Show everyone who's boss.</p>
         </div>
         <p style="font-size:1.3rem; margin-top:2rem;">Are you ready to become the ultimate BoxPvP champion?</p>
+
         <div class="server-info">
-            <h2 style="text-align:center; margin-bottom:1.5rem;">Server Connection</h2>
-            <div class="server-ip" onclick="copyIP()" title="Click to copy">
-                <strong>IP:</strong> IncineratorBox.aternos.me
+            <h2 style="text-align:center; margin-bottom:1.5rem;">🔗 Server Connection</h2>
+
+            <div class="connection-grid">
+                <!-- Java Edition -->
+                <div class="connection-block">
+                    <div class="block-label">☕ Java Edition</div>
+                    <div class="server-ip">
+                        <span>play.incineratorbox.in</span>
+                        <button class="copy-btn" onclick="copyText('play.incineratorbox.in', this)">Copy IP</button>
+                    </div>
+                </div>
+
+                <!-- Bedrock Edition -->
+                <div class="connection-block">
+                    <div class="block-label">📱 Bedrock Edition</div>
+                    <div class="server-ip">
+                        <span>play.incineratorbox.in</span>
+                        <button class="copy-btn" onclick="copyText('play.incineratorbox.in', this)">Copy IP</button>
+                    </div>
+                    <div class="server-ip" style="margin-top:0.4rem;">
+                        <span>Port: 45394</span>
+                        <button class="copy-btn" onclick="copyText('45394', this)">Copy Port</button>
+                    </div>
+                </div>
             </div>
+
+            <div class="bedrock-note">
+                <strong>🔄 Backup IP:</strong> incineratorbox.aternos.me &nbsp;|&nbsp; Same port for Bedrock: 45394
+            </div>
+
             <div style="text-align:center; color:#aaa; margin-top:1rem;"><strong>Version:</strong> 1.21.x</div>
         </div>
+
         <div style="margin-top:2rem;">
-            <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
+            <a href="https://discord.gg/UCfYNtFnav" target="_blank" class="btn discord-btn">
                 <span style="font-size:1.3rem; margin-right:0.5rem;">💬</span> Join Our Discord
             </a>
         </div>
@@ -520,18 +766,44 @@
                 </div>
             </div>
 
-            <!-- Custom Currency -->
+            <!-- Aurex Currency -->
             <div class="feature-card">
                 <div class="feature-icon">🪙</div>
-                <h3>Custom Currency</h3>
-                <p>Forget boring vanilla currency. Incinerator uses a unique <strong>custom currency</strong> system built from the ground up — earned by grinding mines and used across the entire server economy.</p>
+                <h3>Aurex Currency</h3>
+                <p>Forget boring vanilla currency. Incinerator uses <strong>Aurex</strong> — a fully custom currency system built from the ground up. Grind mines to earn fragments, then refine them into increasingly powerful forms.</p>
                 <div class="feature-detail">
-                    <strong>💡 How It Works:</strong>
-                    <ul>
-                        <li>Earn custom currency by mining in the overworld</li>
-                        <li>Higher mines reward more currency per block</li>
-                        <li>Spend it on upgrades, crates, and more</li>
-                        <li>A fully custom economy — no boring defaults</li>
+                    <strong>📈 Aurex Progression:</strong>
+                    <div class="aurex-ladder">
+                        <div class="aurex-rung" style="--aurex-color:#aaaaaa;">
+                            <span class="aurex-step">1</span>
+                            <span class="aurex-name">⚗️ Aurex Fragment</span>
+                            <span class="mine-tier-tag">Raw</span>
+                        </div>
+                        <div class="aurex-rung" style="--aurex-color:#ddaa44;">
+                            <span class="aurex-step">2</span>
+                            <span class="aurex-name">🥇 Aurex Bar</span>
+                            <span class="mine-tier-tag">Refined</span>
+                        </div>
+                        <div class="aurex-rung" style="--aurex-color:#ffcc55;">
+                            <span class="aurex-step">3</span>
+                            <span class="aurex-name">🟡 Aurex Block</span>
+                            <span class="mine-tier-tag">Compressed</span>
+                        </div>
+                        <div class="aurex-rung" style="--aurex-color:#ffe080;">
+                            <span class="aurex-step">4</span>
+                            <span class="aurex-name">✨ Pure Aurex</span>
+                            <span class="mine-tier-tag">Elite</span>
+                        </div>
+                        <div class="aurex-rung" style="--aurex-color:#fff0aa;">
+                            <span class="aurex-step">5</span>
+                            <span class="aurex-name">👑 Crowned Aurex</span>
+                            <span class="mine-tier-tag endgame">Endgame</span>
+                        </div>
+                    </div>
+                    <ul style="margin-top:0.8rem;">
+                        <li>Fragments drop from all mines; higher mines yield more</li>
+                        <li>Refine fragments into Bars, Blocks, and beyond</li>
+                        <li>Spend Aurex on upgrades, crates &amp; market</li>
                     </ul>
                 </div>
             </div>
@@ -546,7 +818,7 @@
                     <ul>
                         <li>Exclusive items not available in shops</li>
                         <li>Rare gear and combat upgrades</li>
-                        <li>Currency bonuses and special rewards</li>
+                        <li>Aurex bonuses and special rewards</li>
                         <li>Keys earned through gameplay &amp; events</li>
                     </ul>
                 </div>
@@ -556,17 +828,17 @@
             <div class="feature-card">
                 <div class="feature-icon">⚔️</div>
                 <h3>Gear Upgrades</h3>
-                <p>Power up your armor and weapons through a fully custom upgrading system. The stronger the mine you grind, the better gear you can work towards. Details coming soon!</p>
+                <p>Power up your armor and weapons through a fully custom upgrading system. The stronger the mine you grind, the better gear you can work towards. More details coming with the overhaul!</p>
                 <div class="feature-detail">
                     <strong>🔥 What's Being Built:</strong>
                     <ul>
                         <li>Advanced custom upgrading system</li>
-                        <li>Rare materials required for top-tier gear</li>
+                        <li>Rare Aurex materials required for top-tier gear</li>
+                        <li>Multiple overworld armour sets with harder unlock requirements</li>
                         <li>Rewarding progression from weak to unstoppable</li>
-                        <li>Full details revealed after server overhaul</li>
                     </ul>
                     <div style="margin-top:1rem; background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.4); border-radius:8px; padding:0.7rem 1rem; font-size:0.88rem; color:#c084fc; text-align:center;">
-                        ⚠️ Upgrade costs &amp; full details coming after the reset
+                        ⚠️ Full upgrade costs &amp; details revealed after the reset
                     </div>
                 </div>
             </div>
@@ -588,8 +860,8 @@
                 <div class="progress-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h4>Earn Currency</h4>
-                        <p>Mine blocks to collect custom currency</p>
+                        <h4>Earn Aurex</h4>
+                        <p>Mine blocks to collect Aurex Fragments &amp; refine them</p>
                     </div>
                 </div>
                 <div class="progress-arrow">→</div>
@@ -597,7 +869,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h4>Upgrade &amp; Open Crates</h4>
-                        <p>Spend currency on gear upgrades and crate keys</p>
+                        <p>Spend Aurex on gear upgrades and crate keys</p>
                     </div>
                 </div>
                 <div class="progress-arrow">→</div>
@@ -605,10 +877,119 @@
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h4>Dominate!</h4>
-                        <p>Reach higher mines and crush your enemies</p>
+                        <p>Reach higher mines, slay bosses &amp; crush your enemies</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- BOSSES & COMBAT -->
+    <section class="bosses-section" id="bosses">
+        <h2>🔥 Bosses &amp; Combat</h2>
+        <p style="text-align:center; font-size:1.1rem; color:#ff8a00;">
+            The Crucible breeds monsters. Only the strongest will survive — let alone conquer them.
+        </p>
+
+        <div class="bosses-grid">
+
+            <div class="boss-card boss-forger">
+                <div class="boss-icon">🔨</div>
+                <div class="boss-name">The Forger</div>
+                <div class="boss-title">Master of Fire &amp; Steel</div>
+                <div class="boss-desc">
+                    Born from the molten core of The Crucible, The Forger is a colossus of burning metal and brute force. Its hammer strikes crack the arena floor and its armour is forged from the rarest materials in the world. A gateway boss — defeat it to prove your early-game dominance.
+                </div>
+                <div class="boss-difficulty">🔥 Moderate Challenge</div>
+            </div>
+
+            <div class="boss-card boss-glacial">
+                <div class="boss-icon">🧊</div>
+                <div class="boss-name">Glacial Tyrant</div>
+                <div class="boss-title">Sovereign of Frozen Ruin</div>
+                <div class="boss-desc">
+                    A titan encased in ancient ice, the Glacial Tyrant slows everything around it and punishes reckless fighters. Its frost aura freezes under-geared players in their tracks. Mid-game players who've mastered the mines will find this a true test of their build.
+                </div>
+                <div class="boss-difficulty">❄️ Hard Challenge</div>
+            </div>
+
+            <div class="boss-card boss-cyro">
+                <div class="boss-icon">🌀</div>
+                <div class="boss-name">Cyro Sentinel</div>
+                <div class="boss-title">The Endgame Warden</div>
+                <div class="boss-desc">
+                    The pinnacle of boss encounters on Incinerator. The Cyro Sentinel is a fusion of cryo energy and arcane power — unpredictable, merciless, and designed to humble even the most maxed-out players. Only those wielding Crowned Aurex gear stand a real chance.
+                </div>
+                <div class="boss-difficulty">💀 Extreme — Endgame</div>
+            </div>
+
+        </div>
+
+        <div class="combat-note">
+            <p>
+                Bosses drop <strong>exclusive loot, rare Aurex materials, and crate keys</strong> not obtainable anywhere else.
+                Each boss is designed to gate progression — don't expect to brute-force them unprepared.
+                More bosses are in development, with <strong>Nether-specific encounters</strong> planned for a future expansion.
+            </p>
+        </div>
+    </section>
+
+    <!-- WORLDS & PROGRESSION -->
+    <section class="worlds-section" id="worlds">
+        <h2>🌍 Worlds &amp; Progression</h2>
+        <p style="text-align:center; font-size:1.1rem; color:#ff8a00;">
+            Every world is a chapter. Master one, unlock the next.
+        </p>
+
+        <div class="worlds-grid">
+
+            <div class="world-card active-world">
+                <div class="world-icon">🌋</div>
+                <div class="world-name">The Crucible</div>
+                <span class="world-status-badge badge-live">✅ Live Now</span>
+                <div class="world-desc">
+                    The starting arena of Incinerator BoxPvP. The Crucible is a brutal overworld built for combat and grinding — home to all 8 mines, the main bosses, and the AngelFalls grinding area.
+                </div>
+                <ul class="world-features">
+                    <li>8-tier mine progression (Wood → Lapis)</li>
+                    <li>Custom Aurex currency economy</li>
+                    <li>3 custom bosses: The Forger, Glacial Tyrant, Cyro Sentinel</li>
+                    <li>AngelFalls — dedicated grinding zone</li>
+                    <li>Crate system &amp; player market</li>
+                    <li>Full PvP arena &amp; BoxPvP combat</li>
+                </ul>
+            </div>
+
+            <div class="world-card future-world">
+                <div class="world-icon">🔥</div>
+                <div class="world-name">The Nether Expanse</div>
+                <span class="world-status-badge badge-upcoming">⚡ Coming Soon</span>
+                <div class="world-desc">
+                    Something big is planned for the Nether. New mines, new bosses, and new mechanics that take everything from The Crucible and crank the difficulty to 11.
+                </div>
+                <ul class="world-features">
+                    <li>New Nether-specific mine tiers</li>
+                    <li>Exclusive Nether boss encounters</li>
+                    <li>High-risk / high-reward zones</li>
+                    <li>Unique armour sets &amp; materials</li>
+                </ul>
+            </div>
+
+            <div class="world-card future-world">
+                <div class="world-icon">🌌</div>
+                <div class="world-name">Future Expansions</div>
+                <span class="world-status-badge badge-upcoming">🔮 Planned</span>
+                <div class="world-desc">
+                    The server is being built to grow. Beyond the Nether, further worlds and dimensions are on the roadmap — each one harder, more rewarding, and more competitive than the last.
+                </div>
+                <ul class="world-features">
+                    <li>Seasonal challenge worlds</li>
+                    <li>Competitive ranked zones</li>
+                    <li>Event-specific temporary arenas</li>
+                    <li>More details revealed as development progresses</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
@@ -749,7 +1130,7 @@
                 <div class="rule-item">Follow mini-game specific rules.</div>
                 <div class="rule-item">Do not abuse teleport commands.</div>
                 <div class="rule-item">No scamming or stealing from other players.</div>
-                <div class="rule-item">No item or currency duplication.</div>
+                <div class="rule-item">No item or Aurex duplication.</div>
             </div>
             <div class="rule-card">
                 <h3>Rules 18–25: Economy &amp; Community</h3>
@@ -798,7 +1179,7 @@
                     </ul>
                     <p class="changelog-subhead">⚙️ Additional Features Planned:</p>
                     <ul class="changelog-list">
-                        <li>Reworked economy with better balance and money sinks</li>
+                        <li>Reworked Aurex economy with better balance and money sinks</li>
                         <li>Advanced upgrading &amp; crafting system with rarer materials</li>
                         <li>High-risk / high-reward PvP and grinding zones</li>
                         <li>Player-driven market and auction improvements</li>
@@ -821,12 +1202,13 @@
                     <ul class="changelog-list">
                         <li>Wood → Stone → Coal → Iron → Gold → Diamond → Emerald → Lapis</li>
                         <li>Progression goes Easiest → Hardest — easier start, brutal endgame</li>
-                        <li>Higher mines reward more currency per block mined</li>
+                        <li>Higher mines reward more Aurex per block mined</li>
                     </ul>
-                    <p class="changelog-subhead">🪙 Custom Currency:</p>
+                    <p class="changelog-subhead">🪙 Aurex Currency:</p>
                     <ul class="changelog-list">
                         <li>Old currency system removed</li>
-                        <li>New fully custom currency being built from scratch</li>
+                        <li>New fully custom Aurex currency built from scratch</li>
+                        <li>Five tiers: Fragment → Bar → Block → Pure Aurex → Crowned Aurex</li>
                         <li>Earned through mining, spent on upgrades and crates</li>
                     </ul>
                     <p class="changelog-subhead">📦 Crate System Added:</p>
@@ -876,7 +1258,7 @@
     <!-- FOOTER -->
     <footer>
         <div style="margin-bottom:1.5rem;">
-            <a href="https://discord.gg/j9K8SD5Q5p" target="_blank" class="btn discord-btn">
+            <a href="https://discord.gg/UCfYNtFnav" target="_blank" class="btn discord-btn">
                 <span style="font-size:1.2rem; margin-right:0.5rem;">💬</span> Join Our Discord
             </a>
         </div>
@@ -886,18 +1268,29 @@
                 📧 incineratorboxpvp@gmail.com
             </a>
         </p>
+        <p style="margin-bottom:0.5rem; color:#aaa; font-size:0.9rem;">
+            <strong style="color:#ff8a00;">Java &amp; Bedrock:</strong> play.incineratorbox.in &nbsp;|&nbsp; Bedrock Port: 45394
+        </p>
         <p>&copy; 2026 Incinerator BoxPvP. All rights reserved.</p>
         <p style="margin-top:0.5rem; color:#aaa;">Fight like a legend. Dominate the arena.</p>
     </footer>
 
-    <div class="copy-notification" id="copyNotification">✓ Server IP copied to clipboard!</div>
+    <div class="copy-notification" id="copyNotification">✓ Copied to clipboard!</div>
 
     <script>
-        function copyIP() {
-            navigator.clipboard.writeText("IncineratorBox.aternos.me").then(() => {
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
                 const n = document.getElementById('copyNotification');
+                n.textContent = '✓ "' + text + '" copied!';
                 n.classList.add('show');
-                setTimeout(() => n.classList.remove('show'), 2000);
+                const orig = btn.textContent;
+                btn.textContent = '✓ Copied';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    n.classList.remove('show');
+                    btn.textContent = orig;
+                    btn.classList.remove('copied');
+                }, 2000);
             });
         }
     </script>
